@@ -9,6 +9,8 @@ PODS:
   - SnapKit (4.0.0)
   - Spring (1.0.3)
   - SwiftDate (4.4.2)
+  - SwiftyJSON (4.0.0)
+  - TouchVisualizer (3.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
@@ -17,6 +19,8 @@ DEPENDENCIES:
   - NotificationBannerSwift
   - Spring (from `https://github.com/MengTo/Spring.git`)
   - SwiftDate
+  - SwiftyJSON
+  - TouchVisualizer (~> 3.0.0)
 
 EXTERNAL SOURCES:
   Spring:
@@ -36,7 +40,9 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftDate: 131cf2f09b390f0a07f0099e36005ffe2fbf4c7e
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  TouchVisualizer: 5cb21ff505c4e60166fe0c8e84a82e5d9ee9e64c
 
-PODFILE CHECKSUM: dc07ad2eaa133340855d9e9324bbed37c06d28f6
+PODFILE CHECKSUM: 8a9ae18fa1fe22b3639b6fc5239df66b9e26fff6
 
 COCOAPODS: 1.3.1

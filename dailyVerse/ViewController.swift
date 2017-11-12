@@ -10,11 +10,13 @@ import UIKit
 
 import SwiftDate
 import Alamofire
+import SwiftyJSON
 
 import NotificationBannerSwift
 import MMMaterialDesignSpinner
 import DynamicBlurView
 import Spring
+import TouchVisualizer
 
 // 狀態欄通知的背景顏色
 class CustomBannerColors: BannerColorsProtocol {
@@ -24,40 +26,101 @@ class CustomBannerColors: BannerColorsProtocol {
 
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate {
 
     @IBOutlet weak var dateText: UILabel!
     @IBOutlet weak var dayText: UILabel!
     @IBOutlet weak var mainText: UILabel!
     @IBOutlet weak var overlayerView: UIView!
     @IBOutlet weak var mainView: UIView!
+
+    @IBOutlet weak var AboutUIView: UIView!
     @IBOutlet weak var aboutMainTextView: SpringView!
     @IBOutlet weak var aboutImage: SpringImageView!
-    
-    var dailyVerse: String = ""
+
+    @IBOutlet weak var chapterView: UIView!
+    @IBOutlet weak var chapterUITableView: UITableView!
+
+
     var spinnerView: MMMaterialDesignSpinner!
     var blurView: DynamicBlurView!
 
+    var updateDataBool: Bool = false
+    var updateTableBool: Bool = false
+
+    var dailyVerse: String = ""
+    var textChapterTitle: String = ""
+    var textChapterNumber: Int = 0
+    var verseArray = Dictionary<Int, String>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        UI_Before()
 
+        print("> viewDidLoad")
+        print("")
+
+        //init_touch()
+
+        UI_Before()
         init_spinner()
         init_today()
         init_verse()
-
         UI_After()
 
-
     }
 
+
+    func init_touch() {
+        var config = Configuration()
+        config.color = UIColor.dlyBlack24
+        Visualizer.start(config)
+    }
+
+    // 一些元件的預先設定
     func UI_Before() {
         self.overlayerView.backgroundColor = UIColor.dlyWhite0
+        AboutUIView.backgroundColor = UIColor.dlyWhite0
+        AboutUIView.isHidden = true
+
+        chapterUITableView.separatorColor = UIColor.clear
+        chapterUITableView.backgroundColor = UIColor.dlyPaleGrey
+        
+        chapterView.isHidden = true
+
     }
 
-    //
+    // 一些數據載入好后的調整
+    func UI_After() {
+        dateText.typesetting(lineSpacing: 1, lineHeightMultiple: 1, characterSpacing: 1.5)
+
+        chapterUITableView.estimatedRowHeight = 74
+        chapterUITableView.rowHeight = UITableViewAutomaticDimension
+    }
+
+    // 重新處理全局變量
+    func UI_updateData() {
+        print("> UI_updateData")
+
+        let matched = self.matches(for: "\\S*", in: dailyVerse)
+        var r = matched
+        r = r.filter { $0 != "" }
+        print(r)
+
+        textChapterTitle = String(r[0])
+        textChapterNumber = Int(r[1])!
+
+        self.updateDataBool = true
+        self.chapterUITableView.reloadData()
+
+
+
+
+    }
+
+    // didReceiveMemoryWarning
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("didReceiveMemoryWarning")
         // Dispose of any resources that can be recreated.
     }
 
@@ -68,12 +131,12 @@ class ViewController: UIViewController {
 
     // 打開﹣關於界面
     @IBAction func openAbout(_ sender: UIButton) {
-        
+
         aboutMainTextView.animation = "slideUp"
         aboutMainTextView.animate()
         aboutImage.animation = "fadeIn"
         aboutImage.animate()
-        
+
         blurView = DynamicBlurView(frame: view.bounds)
         self.overlayerView.backgroundColor = UIColor.dlyWhite0
         overlayerView.isHidden = false
@@ -85,12 +148,13 @@ class ViewController: UIViewController {
 
         mainView.addSubview(blurView)
     }
+    
     // 關閉﹣關於界面
     @IBAction func closeAbout(_ sender: UIButton) {
         UIView.animate(withDuration: 0.6) {
             self.blurView.blurRadius = 0
         }
-        
+
         self.aboutMainTextView.animation = "fall"
         self.aboutMainTextView.animate()
         aboutImage.animation = "fadeOut"
@@ -105,16 +169,149 @@ class ViewController: UIViewController {
 
     }
 
-    // 點擊屏幕中央
-    @IBAction func refreshDailyVerse(_ sender: UITapGestureRecognizer) {
-        init_verse()
+    // 關閉﹣詳細章節界面
+    @IBAction func closeChapterView(_ sender: UIButton) {
+
+        chapterView.alpha = 1
+        UIView.animate(withDuration: 0.3) {
+            self.chapterView.alpha = 0
+        }
+        setTimeout(0.3) {
+            self.chapterView.isHidden = true
+        }
+    }
+
+    // 打開﹣詳細章節界面
+    @IBAction func tapPress(_ sender: UITapGestureRecognizer) {
+        print("> tapPress")
+        
+        if !updateTableBool {
+            spinnerView.startAnimating()
+            self.tableData()
+        }
+        
+        chapterView.isHidden = false
+        chapterView.alpha = 0.0
+        UIView.animate(withDuration: 0.16) {
+            self.chapterView.alpha = 1
+        }
+        
+
+
+    }
+
+    /*
+     * 表格（詳細章節）
+     */
+
+    func tableData() {
+
+        let parameters: Parameters = [
+            "gb": "0",
+            "chap": textChapterNumber,
+            "chineses": "太"
+        ]
+
+        Alamofire.request("https://bible.fhl.net/json/qb.php", parameters: parameters).responseJSON { response in
+
+            print("> 請求的 URL \(String(describing: response.request?.url))")
+
+            switch response.result {
+
+            case .success(let value):
+                let json = JSON(value)
+
+                for (_, subJson): (String, JSON) in json["record"] {
+                    //  print("\(subJson["sec"]) - \(subJson["bible_text"])")
+                    let k: Int = subJson["sec"].intValue
+                    let b: String = subJson["bible_text"].string!
+                    self.verseArray[k] = b
+                }
+                
+                self.chapterUITableView.reloadData()
+                self.spinnerView.stopAnimating()
+                self.updateTableBool = true
+                
+                // print(self.verseArray)
+
+            case .failure(let error):
+                print("> 與 API 通信錯誤")
+                print(error)
+                self.UIStatusMessage(Message: "與 API 通信錯誤")
+            }
+        }
+    }
+
+    // 運算表格數量
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("> Table View...")
+
+        if self.updateDataBool {
+            print("VerseArray count: \(self.verseArray.count)")
+            return self.verseArray.count + 1
+        } else {
+            return 2
+        }
+
+
+    }
+
+    // 填充表格內容
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        if indexPath.row == 0 {
+
+            let ChapterTableCell = tableView.dequeueReusableCell(withIdentifier: "chapterCell") as! ChapterCell
+
+            if !self.updateDataBool {
+                ChapterTableCell.ChapterLaberTitle.text = "Loading..."
+            } else {
+                ChapterTableCell.ChapterLaberTitle.text = "\(textChapterTitle) · \(intIntoString(number: textChapterNumber))章"
+            }
+
+            ChapterTableCell.ChapterLaberTitle.typesetting(lineSpacing: 1, lineHeightMultiple: 1, characterSpacing: 2)
+            ChapterTableCell.backgroundColor = UIColor.dlyPaleGrey
+            return ChapterTableCell
+        } else {
+
+            if self.updateDataBool {
+
+                let SectionTableCell = tableView.dequeueReusableCell(withIdentifier: "SectionLabelCell") as! SectionCell
+                SectionTableCell.sectionLabel.text = self.verseArray[indexPath.row]
+                SectionTableCell.SectionNumberLabel.text = String(indexPath.row)
+                SectionTableCell.backgroundColor = UIColor.dlyPaleGrey
+                SectionTableCell.sectionLabel.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
+                return SectionTableCell
+            } else {
+                
+                let SectionTableCell = tableView.dequeueReusableCell(withIdentifier: "SectionLabelCell") as! SectionCell
+                SectionTableCell.sectionLabel.text = "..."
+                SectionTableCell.SectionNumberLabel.text = String(0)
+                SectionTableCell.backgroundColor = UIColor.dlyPaleGrey
+                SectionTableCell.sectionLabel.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
+                return SectionTableCell
+            }
+
+
+        }
+
     }
 
 
-    // 點擊分享按鈕
+    // 長按﹣屏幕中央
+    @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
+        print("> longPress")
+        init_verse()
+        updateTableBool = false
+        updateDataBool = false
+        self.UIStatusMessage(Message: "重新載入數據")
+    }
+
+
+    // 點擊﹣分享按鈕
     @IBAction func shareAction(_ sender: UIButton) {
 
-        self.UIStatusMessage(Message: "分享今日的金句")
+        self.UIStatusMessage(Message: "正在開啟分享...")
 
         let shareText: String = dailyVerse
         let vc = UIActivityViewController(activityItems: [shareText], applicationActivities: [])
@@ -122,14 +319,11 @@ class ViewController: UIViewController {
 
     }
 
-    // 一些 UI 的調整
-    func UI_After() {
-        dateText.typesetting(lineSpacing: 1, lineHeightMultiple: 1, characterSpacing: 1.5)
-    }
-
     // 初始化日期信息
     func init_today() {
         let date = DateInRegion()
+
+        print(date)
 
         dayText.text = String(date.day)
         dateText.text = String("\(date.string(dateStyle: .long, timeStyle: .none)) · \(date.weekdayName)")
@@ -154,14 +348,14 @@ class ViewController: UIViewController {
                     t.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
                     t.textAlignment = .center
                     self.spinnerView.stopAnimating()
+                    self.UI_updateData()
+
                 } else {
                     // t.text = "Network problem"
                     self.UIStatusMessage(Message: "Network problem")
                 }
             }
         }
-
-
     }
 
     // 初始化 spinner view
@@ -197,6 +391,30 @@ class ViewController: UIViewController {
      */
     func setTimeout(_ delay: TimeInterval, block: @escaping () -> Void) -> Timer {
         return Timer.scheduledTimer(timeInterval: delay, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: false)
+    }
+
+
+    // 正則
+    func matches(for regex: String, in text: String) -> [String] {
+
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: text, range: NSRange(text.startIndex..., in: text))
+            return results.map {
+                String(text[Range($0.range, in: text)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
+
+    // 數字轉中文
+    func intIntoString(number: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style(rawValue: UInt(CFNumberFormatterRoundingMode.roundHalfDown.rawValue))!
+        let string: String = formatter.string(from: NSNumber(value: number))!
+        return string
     }
 
 }
@@ -249,6 +467,10 @@ extension UIColor {
 
     @nonobjc class var dlyWhite0: UIColor {
         return UIColor(named: "white0")!
+    }
+
+    @nonobjc class var dlyPaleGrey: UIColor {
+        return UIColor(named: "paleGrey")!
     }
 }
 
