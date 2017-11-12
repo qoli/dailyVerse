@@ -1,0 +1,11 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Alamofire" "$PODS_CONFIGURATION_BUILD_DIR/DynamicBlurView" "$PODS_CONFIGURATION_BUILD_DIR/MMMaterialDesignSpinner" "$PODS_CONFIGURATION_BUILD_DIR/MarqueeLabel" "$PODS_CONFIGURATION_BUILD_DIR/NotificationBannerSwift" "$PODS_CONFIGURATION_BUILD_DIR/SnapKit" "$PODS_CONFIGURATION_BUILD_DIR/Spring" "$PODS_CONFIGURATION_BUILD_DIR/SwiftDate"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/Alamofire/Alamofire.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/DynamicBlurView/DynamicBlurView.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/MMMaterialDesignSpinner/MMMaterialDesignSpinner.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/MarqueeLabel/MarqueeLabel.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/NotificationBannerSwift/NotificationBannerSwift.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SnapKit/SnapKit.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Spring/Spring.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SwiftDate/SwiftDate.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "DynamicBlurView" -framework "MMMaterialDesignSpinner" -framework "MarqueeLabel" -framework "NotificationBannerSwift" -framework "SnapKit" -framework "Spring" -framework "SwiftDate"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
