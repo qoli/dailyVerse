@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     }
 
     func UI_Before() {
-
+        self.overlayerView.backgroundColor = UIColor.dlyWhite0
     }
 
     //
@@ -89,8 +89,6 @@ class ViewController: UIViewController {
     @IBAction func closeAbout(_ sender: UIButton) {
         UIView.animate(withDuration: 0.6) {
             self.blurView.blurRadius = 0
-            self.overlayerView.backgroundColor = UIColor.dlyWhite0
-//            self.aboutMainTextView.alpha = 0.0
         }
         
         self.aboutMainTextView.animation = "fall"

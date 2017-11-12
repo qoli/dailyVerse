@@ -1,9 +1,25 @@
 
-/* Class = "UILabel"; text = "00"; ObjectID = "9pY-Fn-XaE"; */
-"9pY-Fn-XaE.text" = "00";
+/* Class = "UILabel"; text = "Version 1.0"; ObjectID = "35p-o0-os6"; */
+"35p-o0-os6.text" = "版本 1.0";
 
-/* Class = "UILabel"; text = "date"; ObjectID = "Utb-b0-L94"; */
-"Utb-b0-L94.text" = "date";
+/* Class = "UILabel"; text = "About - Daily Verse"; ObjectID = "41H-A4-Mp0"; */
+"41H-A4-Mp0.text" = "关于 - 每日圣经金句";
 
-/* Class = "UILabel"; text = "今日"; ObjectID = "Xhi-6V-KTR"; */
+/* Class = "UILabel"; text = "UI Designer"; ObjectID = "9Lh-Lp-kJr"; */
+"9Lh-Lp-kJr.text" = "界面设计师";
+
+
+/* Class = "UILabel"; text = "Work Studio"; ObjectID = "PFB-y8-hGL"; */
+"PFB-y8-hGL.text" = "工作室";
+
+/* Class = "UILabel"; text = "Today"; ObjectID = "Xhi-6V-KTR"; */
 "Xhi-6V-KTR.text" = "今日";
+
+/* Class = "UILabel"; text = "API Supply"; ObjectID = "Xtv-oG-Tx4"; */
+"Xtv-oG-Tx4.text" = "API 提供";
+
+/* Class = "UILabel"; text = "Program developer"; ObjectID = "cuB-h6-5KN"; */
+"cuB-h6-5KN.text" = "程序开发人员";
+
+/* Class = "UILabel"; text = "Github Project"; ObjectID = "esh-v5-fFy"; */
+"esh-v5-fFy.text" = "Github 项目";
