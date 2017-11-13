@@ -61,8 +61,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         print("> viewDidLoad")
         print("")
 
-        //init_touch()
-
         UI_Before()
         init_spinner()
         init_today()
@@ -71,8 +69,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     }
 
-
-    func init_touch() {
+    @IBAction func longPressTouch(_ sender: UILongPressGestureRecognizer) {
         var config = Configuration()
         config.color = UIColor.dlyBlack24
         Visualizer.start(config)
