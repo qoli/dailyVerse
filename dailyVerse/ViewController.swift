@@ -52,6 +52,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     var textChapterTitle: String = ""
     var textChapterNumber: Int = 0
     var verseArray = Dictionary<Int, String>()
+    
+    var traditionalChinese: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,8 +86,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         chapterUITableView.separatorColor = UIColor.clear
         chapterUITableView.backgroundColor = UIColor.dlyPaleGrey
-        
+
         chapterView.isHidden = true
+        
+        if Locale.preferredLanguages.contains("zh-Hans-CN") {
+            traditionalChinese = false
+        }
+        
+        
+        
 
     }
 
@@ -93,7 +102,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     func UI_After() {
         dateText.typesetting(lineSpacing: 1, lineHeightMultiple: 1, characterSpacing: 1.5)
 
-        chapterUITableView.estimatedRowHeight = 74
+        chapterUITableView.estimatedRowHeight = 120
         chapterUITableView.rowHeight = UITableViewAutomaticDimension
     }
 
@@ -106,14 +115,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         r = r.filter { $0 != "" }
         print(r)
 
-        textChapterTitle = String(r[0])
-        textChapterNumber = Int(r[1])!
+        textChapterTitle = String(r[0]) //重新賦值章節標題
+        textChapterNumber = Int(r[1])! //重新賦值第 N 章節
 
         self.updateDataBool = true
         self.chapterUITableView.reloadData()
-
-
-
 
     }
 
@@ -121,7 +127,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print("didReceiveMemoryWarning")
-        // Dispose of any resources that can be recreated.
     }
 
     // Try Button
@@ -148,7 +153,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         mainView.addSubview(blurView)
     }
-    
+
     // 關閉﹣關於界面
     @IBAction func closeAbout(_ sender: UIButton) {
         UIView.animate(withDuration: 0.6) {
@@ -160,7 +165,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         aboutImage.animation = "fadeOut"
         aboutImage.animate()
 
-        setTimeout(0.7) {
+        setTimeout(0.6) {
             self.overlayerView.isHidden = true
             if let viewWithTag = self.view.viewWithTag(101) {
                 viewWithTag.removeFromSuperview()
@@ -184,18 +189,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     // 打開﹣詳細章節界面
     @IBAction func tapPress(_ sender: UITapGestureRecognizer) {
         print("> tapPress")
-        
+
         if !updateTableBool {
             spinnerView.startAnimating()
             self.tableData()
         }
-        
+
         chapterView.isHidden = false
         chapterView.alpha = 0.0
         UIView.animate(withDuration: 0.16) {
             self.chapterView.alpha = 1
         }
-        
+
 
 
     }
@@ -206,10 +211,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     func tableData() {
 
+        let sortName = self.traditionalChinese(longName: textChapterTitle)
+        
+        print(sortName)
+        
+        var gb:String = "0"
+        
+        if traditionalChinese {
+            gb = "0"
+        } else {
+            gb = "1"
+        }
+        
         let parameters: Parameters = [
-            "gb": "0",
+            "gb": gb,
             "chap": textChapterNumber,
-            "chineses": "太"
+            "chineses": sortName
         ]
 
         Alamofire.request("https://bible.fhl.net/json/qb.php", parameters: parameters).responseJSON { response in
@@ -227,11 +244,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                     let b: String = subJson["bible_text"].string!
                     self.verseArray[k] = b
                 }
-                
+
                 self.chapterUITableView.reloadData()
                 self.spinnerView.stopAnimating()
                 self.updateTableBool = true
-                
+
                 // print(self.verseArray)
 
             case .failure(let error):
@@ -283,7 +300,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                 SectionTableCell.sectionLabel.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
                 return SectionTableCell
             } else {
-                
+
                 let SectionTableCell = tableView.dequeueReusableCell(withIdentifier: "SectionLabelCell") as! SectionCell
                 SectionTableCell.sectionLabel.text = "..."
                 SectionTableCell.SectionNumberLabel.text = String(0)
@@ -331,10 +348,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     // 初始化金句
     func init_verse() {
-        spinnerView.startAnimating()
-
         let t: UILabel! = self.mainText
         t.text = ""
+        
+        spinnerView.startAnimating()
 
         setTimeout(0.6) {
             Alamofire.request("https://www.taiwanbible.com/blog/dailyverse.jsp").responseString { response in
@@ -343,6 +360,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                     s = s.replacingOccurrences(of: "\r", with: "")
                     s = s.replacingOccurrences(of: "\n", with: "")
                     s = s.trimmingCharacters(in: .whitespacesAndNewlines)
+
+                    if !self.traditionalChinese {
+                        
+                    }
+                    
                     self.dailyVerse = s
                     t.text = s
                     t.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
@@ -415,6 +437,125 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         formatter.numberStyle = NumberFormatter.Style(rawValue: UInt(CFNumberFormatterRoundingMode.roundHalfDown.rawValue))!
         let string: String = formatter.string(from: NSNumber(value: number))!
         return string
+    }
+
+    func traditionalChinese(longName: String) -> String {
+
+        var traditional: [String: String] = [
+            "創世記": "創",
+            "出埃及記": "出",
+            "利未記": "利",
+            "民數記": "民",
+            "申命記": "申",
+            "約書亞記": "書",
+            "士師記": "士",
+            "路得記": "得",
+            "撒母耳記上": "撒上",
+            "撒母耳記下": "撒下",
+            "列王紀上": "王上",
+            "列王紀下": "王下",
+            "歷代志上": "代上",
+            "歷代志下": "代下",
+            "以斯拉記": "拉",
+            "尼希米記": "尼",
+            "以斯帖記": "斯",
+            "約伯記": "伯",
+            "詩篇": "詩",
+            "箴言": "箴",
+            "傳道書": "傳",
+            "雅歌": "歌",
+            "以賽亞書": "賽",
+            "耶利米書": "耶",
+            "耶利米哀歌": "哀",
+            "以西結書": "結",
+            "但以理書": "但",
+            "何西阿書": "何",
+            "約珥書": "珥",
+            "阿摩司書": "摩",
+            "俄巴底亞書": "俄",
+            "約拿書": "拿",
+            "彌迦書": "彌",
+            "那鴻書": "鴻",
+            "哈巴谷書": "哈",
+            "西番雅書": "番",
+            "哈該書": "該",
+            "撒迦利亞書": "亞",
+            "瑪拉基書": "瑪",
+            "馬太福音": "太",
+            "馬可福音": "可",
+            "路加福音": "路",
+            "約翰福音": "約",
+            "使徒行傳": "徒",
+            "羅馬書": "羅",
+            "哥林多前書": "林前",
+            "哥林多後書": "林後",
+            "加拉太書": "加",
+            "以弗所書": "弗",
+            "腓立比書": "腓",
+            "歌羅西書": "西",
+            "帖撒羅尼迦前書": "帖前",
+            "帖撒羅尼迦後書": "帖後",
+            "提摩太前書": "提前",
+            "提摩太後書": "提後",
+            "提多書": "多",
+            "腓利門書": "門",
+            "希伯來書": "來",
+            "雅各書": "雅",
+            "彼得前書": "彼前",
+            "彼得後書": "彼後",
+            "約翰壹書": "約一",
+            "約翰貳書": "約二",
+            "約翰參書": "約三",
+            "猶大書": "猶",
+            "啟示錄": "啟",
+            "哥前": "林前",
+            "哥後": "林後",
+            "歌前": "林前",
+            "歌後": "林後",
+            "希": "來",
+            "約翰一書": "約一",
+            "約翰二書": "約二",
+            "約翰三書": "約三",
+            "約壹": "約一",
+            "約貳": "約二",
+            "約參": "約三",
+            "啓示錄": "啟",
+            "啓": "啟",
+            "创": "創",
+            "书": "書",
+            "诗": "詩",
+            "传": "傳",
+            "赛": "賽",
+            "结": "結",
+            "弥": "彌",
+            "鸿": "鴻",
+            "该": "該",
+            "亚": "亞",
+            "玛": "瑪",
+            "约": "約",
+            "罗": "羅",
+            "林后": "林後",
+            "帖后": "帖後",
+            "提后": "提後",
+            "门": "門",
+            "来": "來",
+            "彼后": "彼後",
+            "约一": "約一",
+            "约二": "約二",
+            "约三": "約三",
+            "犹": "猶",
+            "启": "啟",
+            "哥后": "林後",
+            "歌后": "林後",
+            "约翰一书": "約一",
+            "约翰二书": "約二",
+            "约翰三书": "約三",
+            "约壹": "約一",
+            "约贰": "約二",
+            "约参": "約三"
+        ];
+        
+        return traditional[longName]!
     }
 
 }
