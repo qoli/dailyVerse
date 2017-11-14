@@ -278,7 +278,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         if self.updateDataBool {
             print("VerseArray count: \(self.verseArray.count)")
-            return self.verseArray.count + 1
+            return self.verseArray.count + 2
         } else {
             return 2
         }
@@ -302,6 +302,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             ChapterTableCell.ChapterLaberTitle.typesetting(lineSpacing: 1, lineHeightMultiple: 1, characterSpacing: 2)
             ChapterTableCell.backgroundColor = UIColor.dlyPaleGrey
             return ChapterTableCell
+
+        } else if indexPath.row == self.verseArray.count + 1 {
+            
+            let BlankTableCell = tableView.dequeueReusableCell(withIdentifier: "chapterCell") as! ChapterCell
+            BlankTableCell.ChapterLaberTitle.text = ""
+            BlankTableCell.backgroundColor = UIColor.dlyPaleGrey
+            return BlankTableCell
+
         } else {
 
             if self.updateDataBool {
