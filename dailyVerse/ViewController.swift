@@ -179,7 +179,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         aboutImage.animation = "fadeOut"
         aboutImage.animate()
 
-        setTimeout(0.6) {
+        let _ = setTimeout(0.6) {
             self.overlayerView.isHidden = true
             if let viewWithTag = self.view.viewWithTag(101) {
                 viewWithTag.removeFromSuperview()
@@ -195,7 +195,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         UIView.animate(withDuration: 0.3) {
             self.chapterView.alpha = 0
         }
-        setTimeout(0.3) {
+       let _ = setTimeout(0.3) {
             self.chapterView.isHidden = true
         }
     }
@@ -338,7 +338,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             updateDataBool = false
             self.UIStatusMessage(Message: "重新載入數據")
 
-            setTimeout(4.0) {
+            let _ = setTimeout(4.0) {
                 self.longPressNumber = 0
             }
         }
@@ -377,7 +377,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         
         spinnerView.startAnimating()
 
-        setTimeout(0.6) {
+       let _ =  setTimeout(0.6) {
             Alamofire.request("https://www.taiwanbible.com/blog/dailyverse.jsp").responseString { response in
                 if response.result.isSuccess {
                     var s: String! = response.result.value
