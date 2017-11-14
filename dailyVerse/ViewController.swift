@@ -54,6 +54,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     var verseArray = Dictionary<Int, String>()
     
     var traditionalChinese: Bool = true
+    
+    var longPressNumber: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,9 +92,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             traditionalChinese = false
         }
         
-        
-        
-
     }
 
     // 一些數據載入好后的調整
@@ -134,27 +133,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     // 打開﹣關於界面
     @IBAction func openAbout(_ sender: UIButton) {
 
+        self.AboutUIView.alpha = 1
         aboutMainTextView.animation = "slideUp"
         aboutMainTextView.animate()
         aboutImage.animation = "fadeIn"
         aboutImage.animate()
-
+        
+        
         blurView = DynamicBlurView(frame: view.bounds)
         self.overlayerView.backgroundColor = UIColor.dlyWhite0
-        overlayerView.isHidden = false
+        
         UIView.animate(withDuration: 0.5) {
             self.blurView.blurRadius = 15
             self.overlayerView.backgroundColor = UIColor.dlyWhite50
         }
+        
         blurView.tag = 101
-
-        mainView.addSubview(blurView)
+        self.overlayerView.isHidden = false
+        self.mainView.addSubview(self.blurView)
     }
 
     // 關閉﹣關於界面
     @IBAction func closeAbout(_ sender: UIButton) {
         UIView.animate(withDuration: 0.6) {
             self.blurView.blurRadius = 0
+            self.AboutUIView.alpha = 0
         }
 
         self.aboutMainTextView.animation = "fall"
@@ -311,14 +314,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     }
 
-
     // 長按﹣屏幕中央
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
-        print("> longPress")
-        init_verse()
-        updateTableBool = false
-        updateDataBool = false
-        self.UIStatusMessage(Message: "重新載入數據")
+        print("> longPress: \(longPressNumber)")
+        
+        if longPressNumber == 0 {
+            init_verse()
+            updateTableBool = false
+            updateDataBool = false
+            self.UIStatusMessage(Message: "重新載入數據")
+
+            setTimeout(4.0) {
+                self.longPressNumber = 0
+            }
+        }
+        
+        longPressNumber = longPressNumber + 1
+        
+        
     }
 
 
