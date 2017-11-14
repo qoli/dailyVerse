@@ -368,6 +368,24 @@
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Github Project" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esh-v5-fFy">
+                                                <rect key="frame" x="126" y="213" width="69" height="12"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
+                                                <color key="textColor" name="gunmetal"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="github.com/itamaker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSY-86-NfN">
+                                                <rect key="frame" x="92" y="235" width="136" height="12"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                                                <color key="textColor" name="gunmetal"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Thank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPh-uh-47i">
+                                                <rect key="frame" x="126" y="247" width="69" height="12"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
+                                                <color key="textColor" name="gunmetal"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Hf-Gh-GVK" userLabel="closeButton">
                                                 <rect key="frame" x="148" y="338" width="24" height="24"/>
                                                 <constraints>
@@ -379,12 +397,6 @@
                                                     <action selector="closeAbout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QdV-JI-iLO"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Github Project" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esh-v5-fFy">
-                                                <rect key="frame" x="126" y="213" width="69" height="12"/>
-                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
@@ -400,6 +412,8 @@
                                             <constraint firstItem="Mtm-TZ-0OB" firstAttribute="top" secondItem="XZc-mD-Fdw" secondAttribute="bottom" constant="18" id="F8Z-0Q-7DA"/>
                                             <constraint firstItem="Xtv-oG-Tx4" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="IEE-qD-pJH"/>
                                             <constraint firstItem="44b-72-sNM" firstAttribute="top" secondItem="9Lh-Lp-kJr" secondAttribute="bottom" constant="10" id="KSw-af-fGT"/>
+                                            <constraint firstItem="hSY-86-NfN" firstAttribute="top" secondItem="esh-v5-fFy" secondAttribute="bottom" constant="10" id="PDv-T9-6RT"/>
+                                            <constraint firstItem="jPh-uh-47i" firstAttribute="top" secondItem="hSY-86-NfN" secondAttribute="bottom" id="Qx1-xi-QZ4"/>
                                             <constraint firstItem="VeY-sQ-5K8" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="RUm-Qj-sOG"/>
                                             <constraint firstItem="OaS-0r-d5E" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="VWS-3A-81F"/>
                                             <constraint firstItem="OaS-0r-d5E" firstAttribute="top" secondItem="Xtv-oG-Tx4" secondAttribute="bottom" constant="10" id="VkI-KS-Ot1"/>
@@ -525,6 +539,9 @@
         </namedColor>
         <namedColor name="greyishBrown">
             <color red="0.28999999165534973" green="0.28999999165534973" blue="0.28999999165534973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gunmetal">
+            <color red="0.32499998810000003" green="0.35299998519999998" blue="0.36100000139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="gunmetal">
             <color red="0.32499998807907104" green="0.3529999852180481" blue="0.36100000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
