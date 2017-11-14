@@ -449,6 +449,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         return string
     }
 
+    // 聖經詳細名字轉中文縮寫
     func traditionalChinese(longName: String) -> String {
 
         var traditional: [String: String] = [
