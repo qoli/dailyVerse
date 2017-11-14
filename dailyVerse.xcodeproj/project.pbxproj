@@ -14,6 +14,7 @@
 		F9082A581FB8583E00F1DC15 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9082A561FB8583E00F1DC15 /* MainInterface.storyboard */; };
 		F9082A5C1FB8583E00F1DC15 /* Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F9082A501FB8583E00F1DC15 /* Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F908D2931FB8A3E6002CEEAD /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F908D2921FB8A3E6002CEEAD /* ChapterCell.swift */; };
+		F924C03B1FBAB3E4008B105F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F924C03D1FBAB3E4008B105F /* InfoPlist.strings */; };
 		F9E45F761FB7A54B005DE498 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E45F751FB7A54B005DE498 /* AppDelegate.swift */; };
 		F9E45F781FB7A54B005DE498 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E45F771FB7A54B005DE498 /* ViewController.swift */; };
 		F9E45F7B1FB7A54B005DE498 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9E45F791FB7A54B005DE498 /* Main.storyboard */; };
@@ -61,6 +62,9 @@
 		F9082A571FB8583E00F1DC15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		F9082A591FB8583E00F1DC15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F908D2921FB8A3E6002CEEAD /* ChapterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
+		F924C03C1FBAB3E4008B105F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F924C03E1FBAB3E8008B105F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F924C03F1FBAB3E8008B105F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F9E45F721FB7A54B005DE498 /* dailyVerse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dailyVerse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9E45F751FB7A54B005DE498 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9E45F771FB7A54B005DE498 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 			children = (
 				F9E45F751FB7A54B005DE498 /* AppDelegate.swift */,
 				F9E45F771FB7A54B005DE498 /* ViewController.swift */,
+				F924C03D1FBAB3E4008B105F /* InfoPlist.strings */,
 				F9E45F791FB7A54B005DE498 /* Main.storyboard */,
 				F9FB0CE81FB898B900EAB646 /* SectionCell.swift */,
 				F908D2921FB8A3E6002CEEAD /* ChapterCell.swift */,
@@ -259,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9E45F801FB7A54B005DE498 /* LaunchScreen.storyboard in Resources */,
+				F924C03B1FBAB3E4008B105F /* InfoPlist.strings in Resources */,
 				F9E45F7D1FB7A54B005DE498 /* Assets.xcassets in Resources */,
 				F9E45F7B1FB7A54B005DE498 /* Main.storyboard in Resources */,
 			);
@@ -410,6 +416,16 @@
 				F9082A571FB8583E00F1DC15 /* Base */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		F924C03D1FBAB3E4008B105F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F924C03C1FBAB3E4008B105F /* en */,
+				F924C03E1FBAB3E8008B105F /* zh-Hant */,
+				F924C03F1FBAB3E8008B105F /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		F9E45F791FB7A54B005DE498 /* Main.storyboard */ = {
