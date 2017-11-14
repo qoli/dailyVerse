@@ -22,24 +22,23 @@
 
 import UIKit
 
-import SwiftDate
 import Alamofire
+import Spring
+import SwiftDate
 import SwiftyJSON
-
+import DynamicBlurView
+import TouchVisualizer
 import NotificationBannerSwift
 import MMMaterialDesignSpinner
-import DynamicBlurView
-import Spring
-import TouchVisualizer
 
 // 狀態欄通知的背景顏色
 class CustomBannerColors: BannerColorsProtocol {
     func color(for style: BannerStyle) -> UIColor {
         return UIColor.dlyCoralPink
     }
-
 }
 
+// Main View
 class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate {
 
     @IBOutlet weak var dateText: UILabel!

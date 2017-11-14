@@ -374,14 +374,14 @@
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="github.com/itamaker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSY-86-NfN">
-                                                <rect key="frame" x="92" y="235" width="136" height="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="github.com/itamaker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSY-86-NfN">
+                                                <rect key="frame" x="108" y="235" width="104.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Thank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPh-uh-47i">
-                                                <rect key="frame" x="126" y="247" width="69" height="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPh-uh-47i">
+                                                <rect key="frame" x="146" y="247" width="29.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
@@ -410,6 +410,7 @@
                                             <constraint firstItem="44b-72-sNM" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="DN9-C1-RAQ"/>
                                             <constraint firstItem="esh-v5-fFy" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="E3p-5e-p1x"/>
                                             <constraint firstItem="Mtm-TZ-0OB" firstAttribute="top" secondItem="XZc-mD-Fdw" secondAttribute="bottom" constant="18" id="F8Z-0Q-7DA"/>
+                                            <constraint firstItem="jPh-uh-47i" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="IB5-Ju-U7i"/>
                                             <constraint firstItem="Xtv-oG-Tx4" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="IEE-qD-pJH"/>
                                             <constraint firstItem="44b-72-sNM" firstAttribute="top" secondItem="9Lh-Lp-kJr" secondAttribute="bottom" constant="10" id="KSw-af-fGT"/>
                                             <constraint firstItem="hSY-86-NfN" firstAttribute="top" secondItem="esh-v5-fFy" secondAttribute="bottom" constant="10" id="PDv-T9-6RT"/>
@@ -421,6 +422,7 @@
                                             <constraint firstItem="41H-A4-Mp0" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="Z4T-Ym-QRG"/>
                                             <constraint firstItem="41H-A4-Mp0" firstAttribute="top" secondItem="Bbq-HU-jT4" secondAttribute="top" constant="30" id="aHO-x0-oj8"/>
                                             <constraint firstItem="cuB-h6-5KN" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="ai5-eb-zgU"/>
+                                            <constraint firstItem="hSY-86-NfN" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="fRu-EH-BOO"/>
                                             <constraint firstAttribute="height" constant="450" id="ggF-Tc-6vv"/>
                                             <constraint firstItem="XZc-mD-Fdw" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="i1p-YT-ugh"/>
                                             <constraint firstAttribute="width" constant="320" id="iGG-b0-EMo"/>
