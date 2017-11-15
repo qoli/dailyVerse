@@ -339,49 +339,55 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.taiwanbible.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44b-72-sNM">
-                                                <rect key="frame" x="105" y="133" width="110" height="12"/>
+                                                <rect key="frame" x="105" y="145" width="110" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="API Supply" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtv-oG-Tx4">
-                                                <rect key="frame" x="134" y="145" width="52" height="12"/>
+                                                <rect key="frame" x="134" y="157" width="52" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.5mlstudio.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaS-0r-d5E">
-                                                <rect key="frame" x="109" y="167" width="102" height="12"/>
+                                                <rect key="frame" x="109" y="179" width="102" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work Studio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFB-y8-hGL">
-                                                <rect key="frame" x="131" y="179" width="58" height="12"/>
+                                                <rect key="frame" x="131" y="191" width="58" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="github.com/qoli/dailyVerse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeY-sQ-5K8">
-                                                <rect key="frame" x="92" y="201" width="136" height="12"/>
+                                                <rect key="frame" x="92" y="213" width="136" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Github Project" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esh-v5-fFy">
-                                                <rect key="frame" x="126" y="213" width="69" height="12"/>
+                                                <rect key="frame" x="126" y="225" width="69" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="github.com/senseiphoneX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSY-86-NfN">
-                                                <rect key="frame" x="94.5" y="247" width="131.5" height="12"/>
+                                                <rect key="frame" x="94.5" y="259" width="131.5" height="12"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                                                <color key="textColor" name="gunmetal"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="github.com/itamaker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-oM-Fkr">
+                                                <rect key="frame" x="108" y="247" width="104.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPh-uh-47i">
-                                                <rect key="frame" x="146" y="259" width="29.5" height="12"/>
+                                                <rect key="frame" x="146" y="271" width="29.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
@@ -397,8 +403,8 @@
                                                     <action selector="closeAbout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QdV-JI-iLO"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="github.com/itamaker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-oM-Fkr">
-                                                <rect key="frame" x="108" y="235" width="104.5" height="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bible.fhl.net" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-6V-6nJ">
+                                                <rect key="frame" x="129.5" y="133" width="61" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                 <color key="textColor" name="gunmetal"/>
                                                 <nil key="highlightedColor"/>
@@ -413,6 +419,7 @@
                                             <constraint firstItem="Xtv-oG-Tx4" firstAttribute="top" secondItem="44b-72-sNM" secondAttribute="bottom" id="2nh-Je-kVl"/>
                                             <constraint firstItem="VeY-sQ-5K8" firstAttribute="top" secondItem="PFB-y8-hGL" secondAttribute="bottom" constant="10" id="3zt-KA-IU5"/>
                                             <constraint firstItem="35p-o0-os6" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="4Kp-IQ-ug1"/>
+                                            <constraint firstItem="44b-72-sNM" firstAttribute="top" secondItem="xh9-6V-6nJ" secondAttribute="bottom" id="6LG-25-plm"/>
                                             <constraint firstItem="HoI-oM-Fkr" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="A5U-SJ-g0S"/>
                                             <constraint firstItem="Mtm-TZ-0OB" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="D5M-a4-QWo"/>
                                             <constraint firstItem="44b-72-sNM" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="DN9-C1-RAQ"/>
@@ -421,9 +428,9 @@
                                             <constraint firstItem="jPh-uh-47i" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="IB5-Ju-U7i"/>
                                             <constraint firstItem="Xtv-oG-Tx4" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="IEE-qD-pJH"/>
                                             <constraint firstItem="hSY-86-NfN" firstAttribute="top" secondItem="HoI-oM-Fkr" secondAttribute="bottom" id="JWD-ne-95J"/>
-                                            <constraint firstItem="44b-72-sNM" firstAttribute="top" secondItem="9Lh-Lp-kJr" secondAttribute="bottom" constant="10" id="KSw-af-fGT"/>
                                             <constraint firstItem="jPh-uh-47i" firstAttribute="top" secondItem="hSY-86-NfN" secondAttribute="bottom" id="Qx1-xi-QZ4"/>
                                             <constraint firstItem="VeY-sQ-5K8" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="RUm-Qj-sOG"/>
+                                            <constraint firstItem="xh9-6V-6nJ" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="Rv7-ri-Idg"/>
                                             <constraint firstItem="OaS-0r-d5E" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="VWS-3A-81F"/>
                                             <constraint firstItem="OaS-0r-d5E" firstAttribute="top" secondItem="Xtv-oG-Tx4" secondAttribute="bottom" constant="10" id="VkI-KS-Ot1"/>
                                             <constraint firstItem="35p-o0-os6" firstAttribute="top" secondItem="41H-A4-Mp0" secondAttribute="bottom" id="XAo-AC-d5C"/>
@@ -434,6 +441,7 @@
                                             <constraint firstAttribute="height" constant="450" id="ggF-Tc-6vv"/>
                                             <constraint firstItem="XZc-mD-Fdw" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="i1p-YT-ugh"/>
                                             <constraint firstAttribute="width" constant="320" id="iGG-b0-EMo"/>
+                                            <constraint firstItem="xh9-6V-6nJ" firstAttribute="top" secondItem="9Lh-Lp-kJr" secondAttribute="bottom" constant="10" id="mC9-Mr-f3z"/>
                                             <constraint firstItem="PFB-y8-hGL" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="nJf-ZE-egs"/>
                                             <constraint firstItem="9Lh-Lp-kJr" firstAttribute="top" secondItem="cuB-h6-5KN" secondAttribute="bottom" id="pot-St-AIt"/>
                                             <constraint firstItem="6Hf-Gh-GVK" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="pvA-Rx-Lmq"/>
@@ -549,6 +557,9 @@
         </namedColor>
         <namedColor name="greyishBrown">
             <color red="0.28999999165534973" green="0.28999999165534973" blue="0.28999999165534973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gunmetal">
+            <color red="0.32499998810000003" green="0.35299998519999998" blue="0.36100000139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="gunmetal">
             <color red="0.32499998810000003" green="0.35299998519999998" blue="0.36100000139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
