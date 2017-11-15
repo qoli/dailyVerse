@@ -1,6 +1,6 @@
 # dailyVerse
 
-frist try swfit app
+first try swift app
 
 
 
