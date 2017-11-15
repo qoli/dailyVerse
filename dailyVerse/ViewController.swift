@@ -101,7 +101,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         chapterView.isHidden = true
         
-        if Locale.preferredLanguages.contains("zh-Hans-CN") {
+        if Locale.preferredLanguages[0] == "zh-Hans-CN" {
             traditionalChinese = false
         }
         
@@ -218,15 +218,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     }
 
-    /*
-     * 表格（詳細章節）
-     */
+    // 表格
+    // （載入詳細章節）
 
     func tableData() {
 
         let sortName = self.traditionalChinese(longName: textChapterTitle)
         
-        print(sortName)
+        print("中文縮寫：\(sortName)，traditionalChinese（Bool）：\(traditionalChinese)")
         
         var gb:String = "0"
         
@@ -463,6 +462,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     }
 
     // 數字轉中文
+    // （載入詳細章節用）
     func intIntoString(number: Int) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style(rawValue: UInt(CFNumberFormatterRoundingMode.roundHalfDown.rawValue))!
@@ -471,6 +471,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     }
 
     // 聖經詳細名字轉中文縮寫
+    // （載入詳細章節用）
     func traditionalChinese(longName: String) -> String {
 
         var traditional: [String: String] = [
