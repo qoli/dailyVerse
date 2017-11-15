@@ -160,12 +160,12 @@
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="chapterCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="chapterCell" focusStyle="custom" rowHeight="73" id="m7n-0j-Ts1" userLabel="ChapterCell" customClass="ChapterCell" customModule="dailyVerse" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="73"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m7n-0j-Ts1" id="QsS-ti-Vka">
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m7n-0j-Ts1" id="QsS-ti-Vka">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Chapter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2r-kr-5Ap" userLabel="ChapterTitle" customClass="SpringLabel" customModule="Spring">
-                                                            <rect key="frame" x="20" y="0.0" width="335" height="72.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chapter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2r-kr-5Ap" userLabel="ChapterTitle" customClass="SpringLabel" customModule="Spring">
+                                                            <rect key="frame" x="20" y="0.0" width="335" height="63"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="63" id="9rL-DT-bgs"/>
                                                             </constraints>
@@ -177,8 +177,6 @@
                                                     <constraints>
                                                         <constraint firstItem="e2r-kr-5Ap" firstAttribute="leading" secondItem="QsS-ti-Vka" secondAttribute="leading" constant="20" id="5wJ-dy-Vwg"/>
                                                         <constraint firstAttribute="trailing" secondItem="e2r-kr-5Ap" secondAttribute="trailing" constant="20" id="HFq-Oq-nJJ"/>
-                                                        <constraint firstAttribute="bottom" secondItem="e2r-kr-5Ap" secondAttribute="bottom" id="q1Y-KH-9MA"/>
-                                                        <constraint firstItem="e2r-kr-5Ap" firstAttribute="top" secondItem="QsS-ti-Vka" secondAttribute="top" constant="10" id="rsh-wn-fyS"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <accessibility key="accessibilityConfiguration" identifier="chapterCell">
