@@ -6,6 +6,12 @@
 
 
 
+##### TestFlight 測試申請表單
+
+https://goo.gl/forms/wznzhPKWnvv72Lpx1
+
+
+
 ##### Thank
 
 感謝參與項目的成員：
