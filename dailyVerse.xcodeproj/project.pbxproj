@@ -20,6 +20,7 @@
 		F9082A5C1FB8583E00F1DC15 /* Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F9082A501FB8583E00F1DC15 /* Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F908D2931FB8A3E6002CEEAD /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F908D2921FB8A3E6002CEEAD /* ChapterCell.swift */; };
 		F924C03B1FBAB3E4008B105F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F924C03D1FBAB3E4008B105F /* InfoPlist.strings */; };
+		F94AB5C62009B8F2006BBF98 /* MyFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AB5C52009B8F2006BBF98 /* MyFunctions.swift */; };
 		F9E45F761FB7A54B005DE498 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E45F751FB7A54B005DE498 /* AppDelegate.swift */; };
 		F9E45F781FB7A54B005DE498 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E45F771FB7A54B005DE498 /* ViewController.swift */; };
 		F9E45F7B1FB7A54B005DE498 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9E45F791FB7A54B005DE498 /* Main.storyboard */; };
@@ -75,6 +76,7 @@
 		F924C03C1FBAB3E4008B105F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F924C03E1FBAB3E8008B105F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F924C03F1FBAB3E8008B105F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F94AB5C52009B8F2006BBF98 /* MyFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFunctions.swift; sourceTree = "<group>"; };
 		F9E45F721FB7A54B005DE498 /* dailyVerse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dailyVerse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9E45F751FB7A54B005DE498 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9E45F771FB7A54B005DE498 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		F94AB5C72009B8FA006BBF98 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				F94AB5C52009B8F2006BBF98 /* MyFunctions.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 		F9E45F691FB7A54B005DE498 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +184,7 @@
 		F9E45F741FB7A54B005DE498 /* dailyVerse */ = {
 			isa = PBXGroup;
 			children = (
+				F94AB5C72009B8FA006BBF98 /* Functions */,
 				0A15ED461FBABDE000D2E4DA /* DVExtension */,
 				F9E45F751FB7A54B005DE498 /* AppDelegate.swift */,
 				F9E45F771FB7A54B005DE498 /* ViewController.swift */,
@@ -422,6 +433,7 @@
 				0A15ED501FBABEA500D2E4DA /* UIView+DV.swift in Sources */,
 				F9E45F761FB7A54B005DE498 /* AppDelegate.swift in Sources */,
 				F908D2931FB8A3E6002CEEAD /* ChapterCell.swift in Sources */,
+				F94AB5C62009B8F2006BBF98 /* MyFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,7 +639,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = WQY45CL427;
 				INFOPLIST_FILE = dailyVerse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -647,7 +659,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = WQY45CL427;
 				INFOPLIST_FILE = dailyVerse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

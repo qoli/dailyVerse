@@ -65,9 +65,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     var textChapterTitle: String = ""
     var textChapterNumber: Int = 0
     var verseArray = Dictionary<Int, String>()
-    
+
     var traditionalChinese: Bool = true
-    
+
     var longPressNumber: Int = 0
 
     override func viewDidLoad() {
@@ -100,11 +100,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         chapterUITableView.backgroundColor = UIColor.dlyPaleGrey
 
         chapterView.isHidden = true
-        
+
         if Locale.preferredLanguages[0] == "zh-Hans-CN" {
             traditionalChinese = false
         }
-        
+
     }
 
     // 一些數據載入好后的調整
@@ -151,16 +151,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         aboutMainTextView.animate()
         aboutImage.animation = "fadeIn"
         aboutImage.animate()
-        
-        
+
+
         blurView = DynamicBlurView(frame: view.bounds)
         self.overlayerView.backgroundColor = UIColor.dlyWhite0
-        
+
         UIView.animate(withDuration: 0.5) {
             self.blurView.blurRadius = 15
             self.overlayerView.backgroundColor = UIColor.dlyWhite50
         }
-        
+
         blurView.tag = 101
         self.overlayerView.isHidden = false
         self.mainView.addSubview(self.blurView)
@@ -194,7 +194,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         UIView.animate(withDuration: 0.3) {
             self.chapterView.alpha = 0
         }
-       let _ = setTimeout(0.3) {
+        let _ = setTimeout(0.3) {
             self.chapterView.isHidden = true
         }
     }
@@ -224,30 +224,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     func tableData() {
 
         let sortName = self.traditionalChinese(longName: textChapterTitle)
-        
+
         print("中文縮寫：\(sortName)，traditionalChinese（Bool）：\(traditionalChinese)")
-        
-        var gb:String = "0"
-        
+
+        var gb: String = "0"
+
         if traditionalChinese {
             gb = "0"
         } else {
             gb = "1"
         }
-        
+
         let parameters: Parameters = [
             "gb": gb,
             "chap": textChapterNumber,
             "chineses": sortName
         ]
 
-        Alamofire.request("https://bible.fhl.net/json/qb.php", parameters: parameters).responseJSON { response in
-
-            print("> 請求的 URL \(String(describing: response.request?.url))")
-
-            switch response.result {
-
-            case .success(let value):
+        api.request(
+            URL: "https://bible.fhl.net/json/qb.php",
+            Parameters: parameters,
+            success: { value in
                 let json = JSON(value)
 
                 for (_, subJson): (String, JSON) in json["record"] {
@@ -260,15 +257,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                 self.chapterUITableView.reloadData()
                 self.spinnerView.stopAnimating()
                 self.updateTableBool = true
-
-                // print(self.verseArray)
-
-            case .failure(let error):
-                print("> 與 API 通信錯誤")
+            },
+            failure: { error in
                 print(error)
                 self.UIStatusMessage(Message: "與 API 通信錯誤")
             }
-        }
+        )
+
     }
 
     // 運算表格數量
@@ -303,7 +298,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             return ChapterTableCell
 
         } else if indexPath.row == self.verseArray.count + 1 {
-            
+
             let BlankTableCell = tableView.dequeueReusableCell(withIdentifier: "chapterCell") as! ChapterCell
             BlankTableCell.ChapterLaberTitle.text = ""
             BlankTableCell.backgroundColor = UIColor.dlyPaleGrey
@@ -337,7 +332,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     // 長按﹣屏幕中央
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
         print("> longPress: \(longPressNumber)")
-        
+
         if longPressNumber == 0 {
             init_verse()
             updateTableBool = false
@@ -348,10 +343,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                 self.longPressNumber = 0
             }
         }
-        
+
         longPressNumber = longPressNumber + 1
-        
-        
+
+
     }
 
 
@@ -380,32 +375,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     func init_verse() {
         let t: UILabel! = self.mainText
         t.text = ""
-        
+
         spinnerView.startAnimating()
 
-       let _ =  setTimeout(0.6) {
-            Alamofire.request("https://www.taiwanbible.com/blog/dailyverse.jsp").responseString { response in
-                if response.result.isSuccess {
-                    var s: String! = response.result.value
-                    s = s.replacingOccurrences(of: "\r", with: "")
-                    s = s.replacingOccurrences(of: "\n", with: "")
-                    s = s.trimmingCharacters(in: .whitespacesAndNewlines)
+        let _ = setTimeout(0.6) {
 
-                    if !self.traditionalChinese {
-                        
+            Alamofire.request("https://dailyverse-qoli.appspot.com")
+                .responseString { response in
+                    if response.result.isSuccess {
+                        var s: String! = response.result.value
+                        s = s.replacingOccurrences(of: "\r", with: "")
+                        s = s.replacingOccurrences(of: "\n", with: "")
+                        s = s.trimmingCharacters(in: .whitespacesAndNewlines)
+
+                        if !self.traditionalChinese {
+
+                        }
+
+                        self.dailyVerse = s
+                        t.text = s
+                        t.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
+                        t.textAlignment = .center
+                        self.spinnerView.stopAnimating()
+                        self.UI_updateData()
+
+                    } else {
+                        self.UIStatusMessage(Message: "Network problem")
                     }
-                    
-                    self.dailyVerse = s
-                    t.text = s
-                    t.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
-                    t.textAlignment = .center
-                    self.spinnerView.stopAnimating()
-                    self.UI_updateData()
-
-                } else {
-                    // t.text = "Network problem"
-                    self.UIStatusMessage(Message: "Network problem")
-                }
             }
         }
     }
@@ -587,7 +583,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             "约贰": "約二",
             "约参": "約三"
         ];
-        
+
         return traditional[longName]!
     }
 }
