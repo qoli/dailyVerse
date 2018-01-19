@@ -236,13 +236,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         }
 
         let parameters: Parameters = [
+            "link": "https://bible.fhl.net/json/qb.php",
             "gb": gb,
             "chap": textChapterNumber,
             "chineses": sortName
         ]
 
         api.request(
-            URL: "https://bible.fhl.net/json/qb.php",
+            URL: "https://dailyverse-qoli.appspot.com/bible",
             Parameters: parameters,
             success: { value in
                 let json = JSON(value)
@@ -260,7 +261,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             },
             failure: { error in
                 print(error)
-                self.UIStatusMessage(Message: "與 API 通信錯誤")
+                self.UIStatusMessage(Message: (error as AnyObject).localizedDescription)
             }
         )
 
