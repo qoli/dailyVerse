@@ -243,7 +243,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         ]
 
         api.request(
-            URL: "https://dailyverse-qoli.appspot.com/bible",
+            URL: "https://bible.5mlstudio.com/bible.php",
             Parameters: parameters,
             success: { value in
                 let json = JSON(value)
@@ -380,8 +380,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         spinnerView.startAnimating()
 
         let _ = setTimeout(0.6) {
-
-            Alamofire.request("https://dailyverse-qoli.appspot.com")
+            Alamofire.request("https://bible.5mlstudio.com")
                 .responseString { response in
                     if response.result.isSuccess {
                         var s: String! = response.result.value

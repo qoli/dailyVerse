@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,13 +25,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhi-6V-KTR" userLabel="todayText">
                                         <rect key="frame" x="20" y="20" width="32" height="12"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="10"/>
-                                        <color key="textColor" name="greyishBrown"/>
+                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Utb-b0-L94" userLabel="dateText">
                                         <rect key="frame" x="333" y="20" width="22" height="12"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
-                                        <color key="textColor" name="dark"/>
+                                        <color key="textColor" red="0.12941176470588234" green="0.14901960784313725" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kkm-ti-u6F" userLabel="mainText">
@@ -40,7 +40,7 @@
                                             <constraint firstAttribute="width" constant="280" id="LJV-3O-7Rb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                        <color key="textColor" name="gunmetal"/>
+                                        <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
@@ -54,7 +54,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" name="coralPink"/>
+                                        <color key="backgroundColor" red="0.98039215686274506" green="0.39215686274509803" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="9pY-Fn-XaE" firstAttribute="centerX" secondItem="5HO-ph-Gaz" secondAttribute="centerX" id="AG2-CG-VqM"/>
                                             <constraint firstAttribute="width" constant="32" id="Vyq-na-fnC"/>
@@ -69,7 +69,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cne-c1-nda" userLabel="shareButton">
                                         <rect key="frame" x="164" y="569" width="48" height="48"/>
-                                        <color key="backgroundColor" name="softBlue"/>
+                                        <color key="backgroundColor" red="0.40784313725490196" green="0.6705882352941176" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="mwo-8P-OHU"/>
                                             <constraint firstAttribute="width" constant="48" id="o1L-hG-LG0"/>
@@ -108,14 +108,6 @@
                                             <outletCollection property="gestureRecognizers" destination="8qs-Jd-Kts" appends="YES" id="IfP-39-XCO"/>
                                         </connections>
                                     </view>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBV-2A-ll0" userLabel="tryButton">
-                                        <rect key="frame" x="20" y="590" width="30" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" title="Try"/>
-                                        <connections>
-                                            <action selector="tryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QQs-ax-sMO"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTr-Jx-fqc" userLabel="aboutButton">
                                         <rect key="frame" x="331" y="593" width="24" height="24"/>
                                         <constraints>
@@ -128,7 +120,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="paleGrey"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Utb-b0-L94" secondAttribute="trailing" constant="20" id="14A-sh-LLd"/>
                                     <constraint firstAttribute="trailing" secondItem="eTr-Jx-fqc" secondAttribute="trailing" constant="20" id="409-1g-LEU"/>
@@ -136,11 +128,9 @@
                                     <constraint firstItem="5HO-ph-Gaz" firstAttribute="leading" secondItem="MS9-e7-KEg" secondAttribute="leading" constant="20" id="7Hk-mn-us4"/>
                                     <constraint firstItem="Kkm-ti-u6F" firstAttribute="centerX" secondItem="MS9-e7-KEg" secondAttribute="centerX" id="OiC-3s-cVD"/>
                                     <constraint firstItem="l5T-Pf-qbv" firstAttribute="centerY" secondItem="MS9-e7-KEg" secondAttribute="centerY" id="T58-mG-zGM"/>
-                                    <constraint firstItem="cBV-2A-ll0" firstAttribute="leading" secondItem="MS9-e7-KEg" secondAttribute="leading" constant="20" id="TaQ-Nq-KiK"/>
                                     <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Xhi-6V-KTR" secondAttribute="trailing" constant="323" id="UNL-P4-Czx"/>
                                     <constraint firstItem="5HO-ph-Gaz" firstAttribute="top" secondItem="Xhi-6V-KTR" secondAttribute="bottom" constant="10" id="UcL-nR-JdA"/>
                                     <constraint firstItem="Cne-c1-nda" firstAttribute="centerX" secondItem="MS9-e7-KEg" secondAttribute="centerX" id="VGi-le-dXS"/>
-                                    <constraint firstAttribute="bottom" secondItem="cBV-2A-ll0" secondAttribute="bottom" constant="80" id="Ypj-dO-FGn"/>
                                     <constraint firstItem="Utb-b0-L94" firstAttribute="leading" relation="lessThanOrEqual" secondItem="MS9-e7-KEg" secondAttribute="leading" constant="333" id="c4B-aF-a5h"/>
                                     <constraint firstAttribute="bottom" secondItem="Cne-c1-nda" secondAttribute="bottom" constant="80" id="eHO-6U-ylM"/>
                                     <constraint firstItem="Kkm-ti-u6F" firstAttribute="centerY" secondItem="MS9-e7-KEg" secondAttribute="centerY" constant="-50" id="eqy-lT-eWF"/>
@@ -170,7 +160,7 @@
                                                                 <constraint firstAttribute="height" constant="63" id="9rL-DT-bgs"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
-                                                            <color key="textColor" name="greyishBrown"/>
+                                                            <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -207,7 +197,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" name="coralPink"/>
+                                                            <color key="backgroundColor" red="0.98039215686274506" green="0.39215686274509803" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="oHs-2P-i4L" firstAttribute="centerX" secondItem="cuw-he-MAl" secondAttribute="centerX" id="7Iq-GZ-I3j"/>
                                                                 <constraint firstAttribute="width" constant="24" id="Exs-gu-QK7"/>
@@ -223,7 +213,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYK-FY-s1h">
                                                             <rect key="frame" x="20" y="55" width="345" height="204"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                                            <color key="textColor" name="gunmetal"/>
+                                                            <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -293,23 +283,23 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="677"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbq-HU-jT4" userLabel="aboutTextView" customClass="SpringView" customModule="Spring" colorLabel="IBBuiltInLabel-Green">
-                                        <rect key="frame" x="27" y="255" width="320" height="450"/>
+                                        <rect key="frame" x="37" y="275" width="300" height="430"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About - Daily Verse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41H-A4-Mp0">
-                                                <rect key="frame" x="112" y="30" width="97" height="12"/>
+                                                <rect key="frame" x="101.5" y="30" width="97" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
-                                                <color key="textColor" name="greyishBrown"/>
+                                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35p-o0-os6">
-                                                <rect key="frame" x="134" y="42" width="52" height="12"/>
+                                                <rect key="frame" x="124" y="42" width="52" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
-                                                <color key="textColor" name="greyishBrown"/>
+                                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZc-mD-Fdw" userLabel="line">
-                                                <rect key="frame" x="80" y="68" width="160" height="1"/>
-                                                <color key="backgroundColor" name="white"/>
+                                                <rect key="frame" x="70" y="68" width="160" height="1"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="E4I-t0-vk3"/>
                                                     <constraint firstAttribute="height" constant="1" id="lNx-wQ-ub7"/>
@@ -319,79 +309,79 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qoli Wong" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mtm-TZ-0OB">
-                                                <rect key="frame" x="134" y="87" width="52" height="12"/>
+                                                <rect key="frame" x="124" y="87" width="52" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Program developer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuB-h6-5KN">
-                                                <rect key="frame" x="115" y="99" width="91" height="12"/>
+                                                <rect key="frame" x="104.5" y="99" width="91" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI Designer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lh-Lp-kJr">
-                                                <rect key="frame" x="132" y="111" width="56" height="12"/>
+                                                <rect key="frame" x="122" y="111" width="56" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.taiwanbible.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44b-72-sNM">
-                                                <rect key="frame" x="105" y="145" width="110" height="12"/>
+                                                <rect key="frame" x="95" y="145" width="110" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="API Supply" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtv-oG-Tx4">
-                                                <rect key="frame" x="134" y="157" width="52" height="12"/>
+                                                <rect key="frame" x="124" y="157" width="52" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.5mlstudio.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaS-0r-d5E">
-                                                <rect key="frame" x="109" y="179" width="102" height="12"/>
+                                                <rect key="frame" x="99" y="179" width="102" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work Studio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFB-y8-hGL">
-                                                <rect key="frame" x="131" y="191" width="58" height="12"/>
+                                                <rect key="frame" x="121" y="191" width="58" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="github.com/qoli/dailyVerse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeY-sQ-5K8">
-                                                <rect key="frame" x="92" y="213" width="136" height="12"/>
+                                                <rect key="frame" x="82" y="213" width="136" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Github Project" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esh-v5-fFy">
-                                                <rect key="frame" x="126" y="225" width="69" height="12"/>
+                                                <rect key="frame" x="115.5" y="225" width="69" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="github.com/senseiphoneX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSY-86-NfN">
-                                                <rect key="frame" x="94.5" y="259" width="131.5" height="12"/>
+                                                <rect key="frame" x="84.5" y="259" width="131.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="github.com/itamaker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-oM-Fkr">
-                                                <rect key="frame" x="108" y="247" width="104.5" height="12"/>
+                                                <rect key="frame" x="98" y="247" width="104.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPh-uh-47i">
-                                                <rect key="frame" x="146" y="271" width="29.5" height="12"/>
+                                                <rect key="frame" x="135.5" y="271" width="29.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Hf-Gh-GVK" userLabel="closeButton">
-                                                <rect key="frame" x="148" y="338" width="24" height="24"/>
+                                                <rect key="frame" x="138" y="318" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="rck-Ls-yjl"/>
                                                     <constraint firstAttribute="height" constant="24" id="skl-MZ-aN5"/>
@@ -402,9 +392,9 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bible.fhl.net" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-6V-6nJ">
-                                                <rect key="frame" x="129.5" y="133" width="61" height="12"/>
+                                                <rect key="frame" x="119.5" y="133" width="61" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
-                                                <color key="textColor" name="gunmetal"/>
+                                                <color key="textColor" red="0.32549019607843138" green="0.3529411764705882" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -436,9 +426,9 @@
                                             <constraint firstItem="41H-A4-Mp0" firstAttribute="top" secondItem="Bbq-HU-jT4" secondAttribute="top" constant="30" id="aHO-x0-oj8"/>
                                             <constraint firstItem="cuB-h6-5KN" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="ai5-eb-zgU"/>
                                             <constraint firstItem="hSY-86-NfN" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="fRu-EH-BOO"/>
-                                            <constraint firstAttribute="height" constant="450" id="ggF-Tc-6vv"/>
+                                            <constraint firstAttribute="height" constant="430" id="ggF-Tc-6vv"/>
                                             <constraint firstItem="XZc-mD-Fdw" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="i1p-YT-ugh"/>
-                                            <constraint firstAttribute="width" constant="320" id="iGG-b0-EMo"/>
+                                            <constraint firstAttribute="width" constant="300" id="iGG-b0-EMo"/>
                                             <constraint firstItem="xh9-6V-6nJ" firstAttribute="top" secondItem="9Lh-Lp-kJr" secondAttribute="bottom" constant="10" id="mC9-Mr-f3z"/>
                                             <constraint firstItem="PFB-y8-hGL" firstAttribute="centerX" secondItem="Bbq-HU-jT4" secondAttribute="centerX" id="nJf-ZE-egs"/>
                                             <constraint firstItem="9Lh-Lp-kJr" firstAttribute="top" secondItem="cuB-h6-5KN" secondAttribute="bottom" id="pot-St-AIt"/>
@@ -452,7 +442,7 @@
                                                 <size key="value" width="0.0" height="12"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                <color key="value" name="black24"/>
+                                                <color key="value" white="0.0" alpha="0.23999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                                 <real key="value" value="1"/>
@@ -468,7 +458,7 @@
                                             <outletCollection property="gestureRecognizers" destination="qth-fn-oOf" appends="YES" id="iKf-fX-XxX"/>
                                         </connections>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lanunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="8pZ-1H-S8q" userLabel="aboutImage" customClass="SpringImageView" customModule="Spring">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="lanunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="8pZ-1H-S8q" userLabel="aboutImage" customClass="SpringImageView" customModule="Spring">
                                         <rect key="frame" x="180" y="111" width="15" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="O1O-7k-Oab"/>
@@ -476,18 +466,17 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" name="softBlue"/>
+                                <color key="backgroundColor" red="0.40784313725490196" green="0.6705882352941176" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="6Hf-Gh-GVK" secondAttribute="bottom" constant="60" id="9GM-LR-HLX"/>
-                                    <constraint firstItem="Bbq-HU-jT4" firstAttribute="top" secondItem="8pZ-1H-S8q" secondAttribute="bottom" constant="120" id="Gox-yL-0eY"/>
                                     <constraint firstItem="8pZ-1H-S8q" firstAttribute="centerX" secondItem="CUL-4J-pKM" secondAttribute="centerX" id="ZEv-Vm-O1h"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bbq-HU-jT4" secondAttribute="bottom" constant="-28" id="a4a-HT-YL3"/>
                                     <constraint firstItem="8pZ-1H-S8q" firstAttribute="top" relation="greaterThanOrEqual" secondItem="CUL-4J-pKM" secondAttribute="top" constant="111" id="aFn-bI-WwZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="Bbq-HU-jT4" secondAttribute="bottom" constant="-28" id="cBO-Wz-ALz"/>
                                     <constraint firstItem="Bbq-HU-jT4" firstAttribute="centerX" secondItem="CUL-4J-pKM" secondAttribute="centerX" id="d1o-f5-NlU"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="paleGrey"/>
+                        <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="MS9-e7-KEg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4xe-9E-Ikt"/>
@@ -544,29 +533,5 @@
         <image name="icInfo24Px" width="20" height="20"/>
         <image name="icShare24Px" width="18" height="20"/>
         <image name="lanunchImage" width="15" height="24"/>
-        <namedColor name="black24">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.23999999459999999" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="coralPink">
-            <color red="0.98000001907348633" green="0.3919999897480011" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="dark">
-            <color red="0.1289999932050705" green="0.14900000393390656" blue="0.20399999618530273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="greyishBrown">
-            <color red="0.28999999165534973" green="0.28999999165534973" blue="0.28999999165534973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="gunmetal">
-            <color red="0.32499998810000003" green="0.35299998519999998" blue="0.36100000139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="paleGrey">
-            <color red="0.98000001907348633" green="0.98400002717971802" blue="0.98799997568130493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="softBlue">
-            <color red="0.40799999237060547" green="0.67100000381469727" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="white">
-            <color red="0.92199999094009399" green="0.92199999094009399" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

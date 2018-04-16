@@ -1,73 +1,57 @@
-//dailyVerse
 //
-//Copyright (c) 2017 Qoli Wong - https://github.com/qoli/dailyVerse
+//  UIColor+Additions.swift
+//  dailyVerse
 //
-//Permission is hereby granted, free of charge, to any person obtaining a copy
-//of this software and associated documentation files (the "Software"), to deal
-//in the Software without restriction, including without limitation the rights
-//to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//copies of the Software, and to permit persons to whom the Software is
-//furnished to do so, subject to the following conditions:
+//  Generated on Zeplin. (2018/4/16).
+//  Copyright (c) 2018 __MyCompanyName__. All rights reserved.
 //
-//The above copyright notice and this permission notice shall be included in all
-//copies or substantial portions of the Software.
-//
-//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//SOFTWARE.
 
 import UIKit
 
-/*
- App 顏色板
- */
 extension UIColor {
-    
-    @nonobjc class var dlyCoralPink: UIColor {
-        return UIColor(named: "coralPink")!
-    }
-    
-    @nonobjc class var dlySoftBlue: UIColor {
-        return UIColor(named: "softBlue")!
-    }
-    
-    @nonobjc class var dlyBlack12: UIColor {
-        return UIColor(named: "black12")!
-    }
-    
-    @nonobjc class var dlyGunmetal: UIColor {
-        return UIColor(named: "gunmetal")!
-    }
-    
-    @nonobjc class var dlyGreyishBrown: UIColor {
-        return UIColor(named: "greyishBrown")!
-    }
-    
-    @nonobjc class var dlyDark: UIColor {
-        return UIColor(named: "dark")!
-    }
-    
-    @nonobjc class var dlyBlack24: UIColor {
-        return UIColor(named: "black24")!
-    }
-    
-    @nonobjc class var dlyWhite50: UIColor {
-        return UIColor(named: "white50")!
-    }
-    
-    @nonobjc class var dlyWhite: UIColor {
-        return UIColor(named: "white")!
-    }
-    
-    @nonobjc class var dlyWhite0: UIColor {
-        return UIColor(named: "white0")!
-    }
-    
-    @nonobjc class var dlyPaleGrey: UIColor {
-        return UIColor(named: "paleGrey")!
-    }
+
+  @nonobjc class var dlyCoralPink: UIColor {
+    return UIColor(red: 250.0 / 255.0, green: 100.0 / 255.0, blue: 102.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var dlySoftBlue: UIColor {
+    return UIColor(red: 104.0 / 255.0, green: 171.0 / 255.0, blue: 240.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var dlyBlack12: UIColor {
+    return UIColor(white: 0.0, alpha: 0.12)
+  }
+
+  @nonobjc class var dlyGunmetal: UIColor {
+    return UIColor(red: 83.0 / 255.0, green: 90.0 / 255.0, blue: 92.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var dlyGreyishBrown: UIColor {
+    return UIColor(white: 74.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var dlyDark: UIColor {
+    return UIColor(red: 33.0 / 255.0, green: 38.0 / 255.0, blue: 52.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var dlyBlack24: UIColor {
+    return UIColor(white: 0.0, alpha: 0.24)
+  }
+
+  @nonobjc class var dlyWhite50: UIColor {
+    return UIColor(white: 1.0, alpha: 0.5)
+  }
+
+  @nonobjc class var dlyWhite: UIColor {
+    return UIColor(white: 235.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var dlyWhite0: UIColor {
+    return UIColor(white: 1.0, alpha: 0.0)
+  }
+
+  @nonobjc class var dlyPaleGrey: UIColor {
+    return UIColor(red: 250.0 / 255.0, green: 251.0 / 255.0, blue: 252.0 / 255.0, alpha: 1.0)
+  }
+
 }
