@@ -2,8 +2,8 @@
 //  UIColor+Additions.swift
 //  dailyVerse
 //
-//  Generated on Zeplin. (2018/4/16).
-//  Copyright (c) 2018 __MyCompanyName__. All rights reserved.
+//  Generated on Zeplin. (2019/1/17).
+//  Copyright (c) 2019 __MyCompanyName__. All rights reserved.
 //
 
 import UIKit
@@ -52,6 +52,10 @@ extension UIColor {
 
   @nonobjc class var dlyPaleGrey: UIColor {
     return UIColor(red: 250.0 / 255.0, green: 251.0 / 255.0, blue: 252.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var dlyPaleBlue: UIColor {
+    return UIColor(red: 223.0 / 255.0, green: 229.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0)
   }
 
 }

@@ -21,6 +21,7 @@
 //SOFTWARE.
 
 import UIKit
+import AVFoundation
 
 import Alamofire
 import Spring
@@ -30,6 +31,8 @@ import DynamicBlurView
 import TouchVisualizer
 import NotificationBannerSwift
 import MMMaterialDesignSpinner
+
+
 
 // 狀態欄通知的背景顏色
 class CustomBannerColors: BannerColorsProtocol {
@@ -82,6 +85,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         init_verse()
         UI_After()
 
+//        play(url: "http://media.fhl.net/Cantonese1/1/1_024.mp3")
+
     }
 
     @IBAction func longPressTouch(_ sender: UILongPressGestureRecognizer) {
@@ -117,15 +122,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     // 重新處理全局變量
     func UI_updateData() {
-        print("> UI_updateData")
+        print("> UI_updateData()")
 
-        let matched = self.matches(for: "\\S*", in: dailyVerse)
+        let matched = self.matches(for: "\\S*", in: dailyVerse.replacingOccurrences(of: ":", with: " "))
         var r = matched
         r = r.filter { $0 != "" }
         print(r)
 
+        print(r[1])
+        
         textChapterTitle = String(r[0]) //重新賦值章節標題
-        textChapterNumber = Int(r[1])! //重新賦值第 N 章節
+        textChapterNumber = Int(r[1]) ?? 99 //重新賦值第 N 章節
+        
+        if textChapterNumber == 99 {
+            self.UIStatusMessage(Message: "尋找章節失敗")
+            textChapterNumber = 1
+        }
 
         self.updateDataBool = true
         self.chapterUITableView.reloadData()
@@ -186,6 +198,165 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         }
 
     }
+    @IBOutlet var AudioButton: UIButton!
+
+    var player: AVPlayer?
+    var isPlaying: Bool = false
+    var isReadlyPlay: Bool = false
+    var apiDataAudio: JSON = []
+
+    func playAudio() {
+        if isPlaying {
+            player?.pause()
+        } else {
+            player?.play()
+        }
+    }
+
+    func getAudioURL() {
+
+        let sortName = self.traditionalChinese(longName: textChapterTitle)
+        let parameters: Parameters = [
+            "link": "https://bible.fhl.net/new/read.php",
+            "chap": textChapterNumber,
+            "chineses": sortName
+        ]
+
+        api.request(
+            URL: "https://bible.5mlstudio.com/voice.php",
+            Parameters: parameters,
+            success: { value in
+                let json = JSON(value)
+                self.readlyForPlay(url: json["url"].string!)
+                self.apiDataAudio = json
+            },
+            failure: { error in
+                print(error)
+                self.UIStatusMessage(Message: (error as AnyObject).localizedDescription)
+            }
+        )
+    }
+
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+
+        if keyPath == "rate" {
+            if player?.rate == 1 {
+                print("Playing")
+                isPlaying = true
+                AudioButton.setTitle("播放中", for: .normal)
+            } else {
+                print("Stop")
+                isPlaying = false
+                AudioButton.setTitle("朗讀", for: .normal)
+            }
+        }
+        
+        if keyPath == #keyPath(AVPlayer.currentItem.status) {
+            let newStatus: AVPlayerItemStatus
+            if let newStatusAsNumber = change?[NSKeyValueChangeKey.newKey] as? NSNumber {
+                newStatus = AVPlayerItemStatus(rawValue: newStatusAsNumber.intValue)!
+            } else {
+                newStatus = .unknown
+            }
+            if newStatus == .failed {
+                NSLog("Error: \(String(describing: self.player?.currentItem?.error?.localizedDescription)), error: \(String(describing: self.player?.currentItem?.error))")
+                print("failed")
+            }
+        }
+    }
+
+    // Getting error from Notification payload
+    func newErrorLogEntry(_ notification: Notification) {
+        guard let object = notification.object, let playerItem = object as? AVPlayerItem else {
+            return
+        }
+        guard let errorLog: AVPlayerItemErrorLog = playerItem.errorLog() else {
+            return
+        }
+        NSLog("Error: \(errorLog)")
+    }
+
+    func failedToPlayToEndTime(_ notification: Notification) {
+        print("failedToPlayToEndTime")
+    }
+
+    func readlyForPlay(url: String) {
+        print("readlyForPlay: \(url)")
+        self.isReadlyPlay = true
+
+        guard let url = URL(string: url) else {
+            print("Invalid URL")
+            self.UIStatusMessage(Message: "Invalid URL")
+            return
+        }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            let asset = AVURLAsset(url: url)
+            let item = AVPlayerItem(asset: asset)
+            self.player = AVPlayer(playerItem: item)
+            self.player?.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions(rawValue: NSKeyValueObservingOptions.new.rawValue | NSKeyValueObservingOptions.old.rawValue), context: nil)
+            self.player?.addObserver(self, forKeyPath: #keyPath(AVPlayer.status), options: [.new, .initial], context: nil)
+            // Watch notifications
+            let center = NotificationCenter.default
+            center.addObserver(self, selector: Selector(("newErrorLogEntry:")), name: .AVPlayerItemNewErrorLogEntry, object: player?.currentItem)
+            center.addObserver(self, selector: Selector(("failedToPlayToEndTime:")), name: .AVPlayerItemFailedToPlayToEndTime, object: player?.currentItem)
+
+            // play
+            self.player?.pause()
+        } catch {
+            print(error)
+            self.UIStatusMessage(Message: (error as AnyObject).localizedDescription)
+        }
+    }
+
+    func switchAudio() {
+        if !isReadlyPlay {
+            self.getAudioURL()
+        } else {
+            self.playAudio()
+        }
+    }
+
+    @IBAction func audioTap(_ sender: Any) {
+        print("> audioTap()")
+        self.switchAudio()
+    }
+
+    @IBAction func audioLongPress(_ sender: Any) {
+
+        if longPressNumber == 0 {
+            print("> audioLongPress()")
+
+            // 1
+            let optionMenu = UIAlertController(title: nil, message: "選擇版本", preferredStyle: .actionSheet)
+
+            for (index, subJson): (String, JSON) in apiDataAudio["versionName"] {
+                optionMenu.addAction(UIAlertAction(title: subJson.stringValue, style: .default, handler: { action in
+                    let arr: Array = self.apiDataAudio["audioURL"].arrayValue
+                    self.readlyForPlay(url: arr[Int(index)!].stringValue)
+                    
+                    let _ = self.setTimeout(0.8) {
+                        self.switchAudio()
+                    }
+                }))
+
+            }
+
+            // 4
+            optionMenu.addAction(UIAlertAction(title: "關閉", style: .cancel))
+
+            // 5
+            self.present(optionMenu, animated: true, completion: nil)
+
+            let _ = setTimeout(4.0) {
+                self.longPressNumber = 0
+            }
+        }
+
+        longPressNumber = longPressNumber + 1
+    }
 
     // 關閉﹣詳細章節界面
     @IBAction func closeChapterView(_ sender: UIButton) {
@@ -201,7 +372,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     // 打開﹣詳細章節界面
     @IBAction func tapPress(_ sender: UITapGestureRecognizer) {
-        print("> tapPress")
+        print("> tapPress()")
 
         if !updateTableBool {
             spinnerView.startAnimating()
@@ -241,20 +412,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             "chap": textChapterNumber,
             "chineses": sortName
         ]
+        
+        // 重置播放狀態
+        self.isReadlyPlay = false
+        self.AudioButton.setTitle("...", for: .normal)
+        self.getAudioURL()
 
         api.request(
             URL: "https://bible.5mlstudio.com/bible.php",
             Parameters: parameters,
             success: { value in
+                // Table Data
                 let json = JSON(value)
-
                 for (_, subJson): (String, JSON) in json["record"] {
                     //  print("\(subJson["sec"]) - \(subJson["bible_text"])")
                     let k: Int = subJson["sec"].intValue
                     let b: String = subJson["bible_text"].string!
                     self.verseArray[k] = b
                 }
-
                 self.chapterUITableView.reloadData()
                 self.spinnerView.stopAnimating()
                 self.updateTableBool = true
@@ -332,7 +507,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     // 長按﹣屏幕中央
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
-        print("> longPress: \(longPressNumber)")
+//        print("> longPress: \(longPressNumber)")
 
         if longPressNumber == 0 {
             init_verse()
@@ -346,7 +521,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         }
 
         longPressNumber = longPressNumber + 1
-
 
     }
 
@@ -370,6 +544,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         dayText.text = String(date.day)
         dateText.text = String("\(date.string(dateStyle: .long, timeStyle: .none)) · \(date.weekdayName)")
+        dateText.textAlignment = .right
     }
 
     // 初始化金句
@@ -584,7 +759,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             "约参": "約三"
         ];
 
-        return traditional[longName]!
+        return (traditional[longName] ?? "")
     }
 }
 

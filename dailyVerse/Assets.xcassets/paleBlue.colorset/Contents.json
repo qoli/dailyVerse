@@ -1,17 +1,17 @@
 {
   "info" : {
     "version" : 1,
-    "author" : "zeplin"
+    "author" : "xcode"
   },
   "colors" : [
     {
       "idiom" : "universal",
       "color" : {
         "components" : {
-          "green" : "0.290",
-          "blue" : "0.290",
+          "green" : "0.898",
+          "blue" : "0.922",
           "alpha" : "1.000",
-          "red" : "0.290"
+          "red" : "0.875"
         },
         "color-space" : "srgb"
       }

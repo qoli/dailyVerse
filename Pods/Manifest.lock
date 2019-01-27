@@ -22,6 +22,18 @@ DEPENDENCIES:
   - SwiftyJSON
   - TouchVisualizer (~> 3.0.0)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - DynamicBlurView
+    - MarqueeLabel
+    - MMMaterialDesignSpinner
+    - NotificationBannerSwift
+    - SnapKit
+    - SwiftDate
+    - SwiftyJSON
+    - TouchVisualizer
+
 EXTERNAL SOURCES:
   Spring:
     :git: https://github.com/MengTo/Spring.git
@@ -45,4 +57,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 8a9ae18fa1fe22b3639b6fc5239df66b9e26fff6
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3
