@@ -52,6 +52,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     @IBOutlet weak var AboutUIView: UIView!
     @IBOutlet weak var aboutMainTextView: SpringView!
+    @IBOutlet weak var aboutVersion: UILabel!
     @IBOutlet weak var aboutImage: SpringImageView!
 
     @IBOutlet weak var chapterView: UIView!
@@ -106,6 +107,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         chapterView.isHidden = true
 
+        // 刷新版本號
+        // Get the app's main bundle
+        let mainBundle = Bundle.main
+        
+        let appVersion = mainBundle.infoDictionary!["CFBundleShortVersionString"] as? String
+        let build = mainBundle.infoDictionary!["CFBundleVersion"] as? String
+//        print(appVersion)
+        
+        aboutVersion.text =  "version \(appVersion ?? "0") (Build \(build ?? "0"))"
+        
         if Locale.preferredLanguages[0] == "zh-Hans-CN" {
             traditionalChinese = false
         }

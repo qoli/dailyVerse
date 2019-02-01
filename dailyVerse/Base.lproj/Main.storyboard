@@ -74,7 +74,7 @@
                                             <constraint firstAttribute="width" constant="60" id="o1L-hG-LG0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="分享"/>
+                                        <state key="normal" title="Share"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="3"/>
@@ -514,6 +514,7 @@
                         <outlet property="AudioButton" destination="cID-Id-9AU" id="aFv-f0-855"/>
                         <outlet property="aboutImage" destination="8pZ-1H-S8q" id="5Jz-cA-il0"/>
                         <outlet property="aboutMainTextView" destination="Bbq-HU-jT4" id="4Tl-ek-O2z"/>
+                        <outlet property="aboutVersion" destination="35p-o0-os6" id="KXf-1D-7kq"/>
                         <outlet property="chapterUITableView" destination="XbN-fW-OJB" id="GuZ-JN-L9E"/>
                         <outlet property="chapterView" destination="ghw-ad-NYP" id="Nmw-Nw-hsj"/>
                         <outlet property="dateText" destination="Utb-b0-L94" id="cXA-2m-ncd"/>
