@@ -6,11 +6,12 @@ target 'dailyVerse' do
   use_frameworks!
 
   # Pods for dailyVerse
-
+  pod 'BaiduMobStatCodeless'
+  
   # UI Labs
   pod 'NotificationBannerSwift'
-  pod "MMMaterialDesignSpinner"
-  pod "DynamicBlurView"
+  pod 'MMMaterialDesignSpinner'
+  pod 'DynamicBlurView'
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 
   #

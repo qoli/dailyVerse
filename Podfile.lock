@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.5.1)
+  - BaiduMobStatCodeless (4.9.5)
   - DynamicBlurView (2.0.0)
   - MarqueeLabel/Swift (3.1.3)
   - MMMaterialDesignSpinner (0.2.5)
@@ -14,6 +15,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
+  - BaiduMobStatCodeless
   - DynamicBlurView
   - MMMaterialDesignSpinner
   - NotificationBannerSwift
@@ -25,6 +27,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - BaiduMobStatCodeless
     - DynamicBlurView
     - MarqueeLabel
     - MMMaterialDesignSpinner
@@ -45,6 +48,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  BaiduMobStatCodeless: 8fa2c6bf1cc9f5ec3ec77c69fbf4d5ed195c959a
   DynamicBlurView: 7b1bfbc1e7a0606b8a1855ff809ccaccfbda6b30
   MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
   MMMaterialDesignSpinner: a548042720c2e5f04212048483085d7942ac3e81
@@ -55,6 +59,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   TouchVisualizer: 5cb21ff505c4e60166fe0c8e84a82e5d9ee9e64c
 
-PODFILE CHECKSUM: 8a9ae18fa1fe22b3639b6fc5239df66b9e26fff6
+PODFILE CHECKSUM: fad9b9a0424d09c905adf0ab801ed086534c85ef
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.2
