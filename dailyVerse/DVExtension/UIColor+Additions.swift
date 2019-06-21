@@ -2,7 +2,7 @@
 //  UIColor+Additions.swift
 //  dailyVerse
 //
-//  Generated on Zeplin. (2019/1/17).
+//  Generated on Zeplin. (2019/6/21).
 //  Copyright (c) 2019 __MyCompanyName__. All rights reserved.
 //
 
@@ -50,12 +50,20 @@ extension UIColor {
     return UIColor(white: 1.0, alpha: 0.0)
   }
 
-  @nonobjc class var dlyPaleGrey: UIColor {
+  @nonobjc class var dlyBackgroudColor: UIColor {
     return UIColor(red: 250.0 / 255.0, green: 251.0 / 255.0, blue: 252.0 / 255.0, alpha: 1.0)
   }
 
   @nonobjc class var dlyPaleBlue: UIColor {
     return UIColor(red: 223.0 / 255.0, green: 229.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var dlyButtonColorDark: UIColor {
+    return UIColor(red: 56.0 / 255.0, green: 60.0 / 255.0, blue: 64.0 / 255.0, alpha: 1.0)
+  }
+
+  @nonobjc class var dlyTextColorDark: UIColor {
+    return UIColor(white: 181.0 / 255.0, alpha: 1.0)
   }
 
 }

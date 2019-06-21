@@ -28,7 +28,6 @@ import Spring
 import SwiftDate
 import SwiftyJSON
 import DynamicBlurView
-import TouchVisualizer
 import NotificationBannerSwift
 import MMMaterialDesignSpinner
 
@@ -91,19 +90,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     }
 
     @IBAction func longPressTouch(_ sender: UILongPressGestureRecognizer) {
-        var config = Configuration()
-        config.color = UIColor.dlyBlack24
-        Visualizer.start(config)
+        
     }
 
     // 一些元件的預先設定
     func UI_Before() {
-        self.overlayerView.backgroundColor = UIColor.dlyWhite0
-        AboutUIView.backgroundColor = UIColor.dlyWhite0
+        self.overlayerView.backgroundColor = UIColor(named: "white0")
+        AboutUIView.backgroundColor = UIColor(named: "white0")
         AboutUIView.isHidden = true
 
         chapterUITableView.separatorColor = UIColor.clear
-        chapterUITableView.backgroundColor = UIColor.dlyPaleGrey
+        chapterUITableView.backgroundColor = UIColor(named: "backgroudColor")
 
         chapterView.isHidden = true
 
@@ -128,7 +125,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         dateText.typesetting(lineSpacing: 1, lineHeightMultiple: 1, characterSpacing: 1.5)
 
         chapterUITableView.estimatedRowHeight = 120
-        chapterUITableView.rowHeight = UITableViewAutomaticDimension
+        chapterUITableView.rowHeight = UITableView.automaticDimension
     }
 
     // 重新處理全局變量
@@ -177,11 +174,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
 
         blurView = DynamicBlurView(frame: view.bounds)
-        self.overlayerView.backgroundColor = UIColor.dlyWhite0
+        self.overlayerView.backgroundColor = UIColor(named: "white0")
 
         UIView.animate(withDuration: 0.5) {
             self.blurView.blurRadius = 15
-            self.overlayerView.backgroundColor = UIColor.dlyWhite50
+            self.overlayerView.backgroundColor = UIColor(named: "white50")
         }
 
         blurView.tag = 101
@@ -264,9 +261,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         }
         
         if keyPath == #keyPath(AVPlayer.currentItem.status) {
-            let newStatus: AVPlayerItemStatus
+            let newStatus: AVPlayerItem.Status
             if let newStatusAsNumber = change?[NSKeyValueChangeKey.newKey] as? NSNumber {
-                newStatus = AVPlayerItemStatus(rawValue: newStatusAsNumber.intValue)!
+                newStatus = AVPlayerItem.Status(rawValue: newStatusAsNumber.intValue)!
             } else {
                 newStatus = .unknown
             }
@@ -303,7 +300,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         }
 
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)))
             let asset = AVURLAsset(url: url)
             let item = AVPlayerItem(asset: asset)
             self.player = AVPlayer(playerItem: item)
@@ -368,8 +365,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         longPressNumber = longPressNumber + 1
     }
-
-    // 關閉﹣詳細章節界面
+    
+    // MARK: 關閉 詳細章節界面
     @IBAction func closeChapterView(_ sender: UIButton) {
 
         chapterView.alpha = 1
@@ -381,7 +378,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         }
     }
 
-    // 打開﹣詳細章節界面
+    // MARK: 打開 詳細章節界面
     @IBAction func tapPress(_ sender: UITapGestureRecognizer) {
         print("> tapPress()")
 
@@ -392,6 +389,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         chapterView.isHidden = false
         chapterView.alpha = 0.0
+        chapterView.backgroundColor = UIColor(named: "backgroudColor")
         UIView.animate(withDuration: 0.16) {
             self.chapterView.alpha = 1
         }
@@ -481,14 +479,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             }
 
             ChapterTableCell.ChapterLaberTitle.typesetting(lineSpacing: 1, lineHeightMultiple: 1, characterSpacing: 2)
-            ChapterTableCell.backgroundColor = UIColor.dlyPaleGrey
+            ChapterTableCell.backgroundColor = UIColor(named: "backgroudColor")
             return ChapterTableCell
 
         } else if indexPath.row == self.verseArray.count + 1 {
 
             let BlankTableCell = tableView.dequeueReusableCell(withIdentifier: "chapterCell") as! ChapterCell
             BlankTableCell.ChapterLaberTitle.text = ""
-            BlankTableCell.backgroundColor = UIColor.dlyPaleGrey
+            BlankTableCell.backgroundColor = UIColor(named: "backgroudColor")
             return BlankTableCell
 
         } else {
@@ -498,7 +496,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                 let SectionTableCell = tableView.dequeueReusableCell(withIdentifier: "SectionLabelCell") as! SectionCell
                 SectionTableCell.sectionLabel.text = self.verseArray[indexPath.row]
                 SectionTableCell.SectionNumberLabel.text = String(indexPath.row)
-                SectionTableCell.backgroundColor = UIColor.dlyPaleGrey
+                SectionTableCell.backgroundColor = UIColor(named: "backgroudColor")
                 SectionTableCell.sectionLabel.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
                 return SectionTableCell
             } else {
@@ -506,7 +504,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                 let SectionTableCell = tableView.dequeueReusableCell(withIdentifier: "SectionLabelCell") as! SectionCell
                 SectionTableCell.sectionLabel.text = "..."
                 SectionTableCell.SectionNumberLabel.text = String(0)
-                SectionTableCell.backgroundColor = UIColor.dlyPaleGrey
+                SectionTableCell.backgroundColor = UIColor(named: "backgroudColor")
                 SectionTableCell.sectionLabel.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
                 return SectionTableCell
             }
@@ -554,7 +552,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         print(date)
 
         dayText.text = String(date.day)
-        dateText.text = String("\(date.string(dateStyle: .long, timeStyle: .none)) · \(date.weekdayName)")
+        dateText.text = String("\(date.toFormat("dd MMM yyyy")) · \(date.weekdayName(.default))")
         dateText.textAlignment = .right
     }
 
@@ -656,7 +654,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     // （載入詳細章節用）
     func traditionalChinese(longName: String) -> String {
 
-        var traditional: [String: String] = [
+        let traditional: [String: String] = [
             "創世記": "創",
             "出埃及記": "出",
             "利未記": "利",
@@ -790,3 +788,8 @@ class DesignableLabel: UILabel {
 }
 
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
+}
