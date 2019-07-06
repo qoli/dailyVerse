@@ -25,6 +25,16 @@ enum api {
                 case .success(let value):
                     success(value)
                 case .failure(let error):
+                    // 發送錯誤信息到開發者
+                    // https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5
+ 
+                    // Add URL parameters
+                    let urlParams = [
+                        "text":"dailyVerse:\(error)",
+                    ]
+                    
+                    // Fetch Request
+                    Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5", method: .get, parameters: urlParams)
                     failure(error)
                 }
         }

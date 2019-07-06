@@ -90,7 +90,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     }
 
     @IBAction func longPressTouch(_ sender: UILongPressGestureRecognizer) {
-        
+
     }
 
     // 一些元件的預先設定
@@ -107,13 +107,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         // 刷新版本號
         // Get the app's main bundle
         let mainBundle = Bundle.main
-        
+
         let appVersion = mainBundle.infoDictionary!["CFBundleShortVersionString"] as? String
         let build = mainBundle.infoDictionary!["CFBundleVersion"] as? String
 //        print(appVersion)
-        
-        aboutVersion.text =  "version \(appVersion ?? "0") (Build \(build ?? "0"))"
-        
+
+        aboutVersion.text = "version \(appVersion ?? "0") (Build \(build ?? "0"))"
+
         if Locale.preferredLanguages[0] == "zh-Hans-CN" {
             traditionalChinese = false
         }
@@ -138,10 +138,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         print(r)
 
         print(r[1])
-        
+
         textChapterTitle = String(r[0]) //重新賦值章節標題
         textChapterNumber = Int(r[1]) ?? 99 //重新賦值第 N 章節
-        
+
         if textChapterNumber == 99 {
             self.UIStatusMessage(Message: "尋找章節失敗")
             textChapterNumber = 1
@@ -259,7 +259,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                 AudioButton.setTitle("朗讀", for: .normal)
             }
         }
-        
+
         if keyPath == #keyPath(AVPlayer.currentItem.status) {
             let newStatus: AVPlayerItem.Status
             if let newStatusAsNumber = change?[NSKeyValueChangeKey.newKey] as? NSNumber {
@@ -344,7 +344,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                 optionMenu.addAction(UIAlertAction(title: subJson.stringValue, style: .default, handler: { action in
                     let arr: Array = self.apiDataAudio["audioURL"].arrayValue
                     self.readlyForPlay(url: arr[Int(index)!].stringValue)
-                    
+
                     let _ = self.setTimeout(0.8) {
                         self.switchAudio()
                     }
@@ -365,7 +365,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         longPressNumber = longPressNumber + 1
     }
-    
+
     // MARK: 關閉 詳細章節界面
     @IBAction func closeChapterView(_ sender: UIButton) {
 
@@ -421,7 +421,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             "chap": textChapterNumber,
             "chineses": sortName
         ]
-        
+
         // 重置播放狀態
         self.isReadlyPlay = false
         self.AudioButton.setTitle("...", for: .normal)
@@ -495,10 +495,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
                 let SectionTableCell = tableView.dequeueReusableCell(withIdentifier: "SectionLabelCell") as! SectionCell
                 SectionTableCell.sectionLabel.text = self.verseArray[indexPath.row]
-                SectionTableCell.SectionNumberLabel.text = String(indexPath.row)
-                SectionTableCell.backgroundColor = UIColor(named: "backgroudColor")
-                SectionTableCell.sectionLabel.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
+
+                if (self.verseArray[indexPath.row] != "") {
+                    SectionTableCell.SectionNumberLabel.text = String(indexPath.row)
+                    SectionTableCell.backgroundColor = UIColor(named: "backgroudColor")
+                    SectionTableCell.sectionLabel.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
+                }
                 return SectionTableCell
+
             } else {
 
                 let SectionTableCell = tableView.dequeueReusableCell(withIdentifier: "SectionLabelCell") as! SectionCell
@@ -791,5 +795,5 @@ class DesignableLabel: UILabel {
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
-	return input.rawValue
+    return input.rawValue
 }
