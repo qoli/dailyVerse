@@ -85,8 +85,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         init_verse()
         UI_After()
 
-//        play(url: "http://media.fhl.net/Cantonese1/1/1_024.mp3")
-
     }
 
     @IBAction func longPressTouch(_ sender: UILongPressGestureRecognizer) {
@@ -128,7 +126,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         chapterUITableView.rowHeight = UITableView.automaticDimension
     }
 
-    // 重新處理全局變量
+    // MARK: 重新處理全局變量
     func UI_updateData() {
         print("> UI_updateData()")
 
@@ -136,8 +134,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         var r = matched
         r = r.filter { $0 != "" }
         print(r)
-
-        print(r[1])
 
         textChapterTitle = String(r[0]) //重新賦值章節標題
         textChapterNumber = Int(r[1]) ?? 99 //重新賦值第 N 章節
@@ -560,7 +556,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         dateText.textAlignment = .right
     }
 
-    // 初始化金句
+    // MARK: - 初始化金句
     func init_verse() {
         let t: UILabel! = self.mainText
         t.text = ""
@@ -571,21 +567,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             Alamofire.request("https://bible.5mlstudio.com")
                 .responseString { response in
                     if response.result.isSuccess {
-                        var s: String! = response.result.value
-                        s = s.replacingOccurrences(of: "\r", with: "")
-                        s = s.replacingOccurrences(of: "\n", with: "")
-                        s = s.trimmingCharacters(in: .whitespacesAndNewlines)
-
-                        if !self.traditionalChinese {
-
+                        var s: String! = response.result.value ?? ""
+                        
+                        if (response.result.value != "") {
+                            s = s.replacingOccurrences(of: "\r", with: "")
+                            s = s.replacingOccurrences(of: "\n", with: "")
+                            s = s.trimmingCharacters(in: .whitespacesAndNewlines)
+                            
+                            if !self.traditionalChinese {
+                                // 簡體中文模式
+                            }
+                            
+                            self.dailyVerse = s
+                            t.text = s
+                            t.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
+                            t.textAlignment = .center
+                            self.spinnerView.stopAnimating()
+                            self.UI_updateData()
+                        } else {
+                            self.spinnerView.stopAnimating()
+                            t.text = "API Error"
                         }
-
-                        self.dailyVerse = s
-                        t.text = s
-                        t.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
-                        t.textAlignment = .center
-                        self.spinnerView.stopAnimating()
-                        self.UI_updateData()
+                        
+                        
 
                     } else {
                         self.UIStatusMessage(Message: "Network problem")
