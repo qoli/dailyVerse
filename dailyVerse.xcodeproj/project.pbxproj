@@ -20,6 +20,7 @@
 		F908D2931FB8A3E6002CEEAD /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F908D2921FB8A3E6002CEEAD /* ChapterCell.swift */; };
 		F924C03B1FBAB3E4008B105F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F924C03D1FBAB3E4008B105F /* InfoPlist.strings */; };
 		F94AB5C62009B8F2006BBF98 /* MyFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94AB5C52009B8F2006BBF98 /* MyFunctions.swift */; };
+		F98819A622D4548100BCB099 /* GBig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98819A522D4548100BCB099 /* GBig.swift */; };
 		F9B1538322BD2EB400B9DEF5 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B1538222BD2EB400B9DEF5 /* UIColor+Additions.swift */; };
 		F9E45F761FB7A54B005DE498 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E45F751FB7A54B005DE498 /* AppDelegate.swift */; };
 		F9E45F781FB7A54B005DE498 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E45F771FB7A54B005DE498 /* ViewController.swift */; };
@@ -76,6 +77,7 @@
 		F924C03E1FBAB3E8008B105F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F924C03F1FBAB3E8008B105F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F94AB5C52009B8F2006BBF98 /* MyFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFunctions.swift; sourceTree = "<group>"; };
+		F98819A522D4548100BCB099 /* GBig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GBig.swift; sourceTree = "<group>"; };
 		F9B1538222BD2EB400B9DEF5 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		F9E45F721FB7A54B005DE498 /* dailyVerse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dailyVerse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9E45F751FB7A54B005DE498 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				F94AB5C52009B8F2006BBF98 /* MyFunctions.swift */,
+				F98819A522D4548100BCB099 /* GBig.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				F9B1538322BD2EB400B9DEF5 /* UIColor+Additions.swift in Sources */,
 				F9E45F781FB7A54B005DE498 /* ViewController.swift in Sources */,
 				0A15ED501FBABEA500D2E4DA /* UIView+DV.swift in Sources */,
+				F98819A622D4548100BCB099 /* GBig.swift in Sources */,
 				F9E45F761FB7A54B005DE498 /* AppDelegate.swift in Sources */,
 				F908D2931FB8A3E6002CEEAD /* ChapterCell.swift in Sources */,
 				F94AB5C62009B8F2006BBF98 /* MyFunctions.swift in Sources */,

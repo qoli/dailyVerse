@@ -111,8 +111,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 //        print(appVersion)
 
         aboutVersion.text = "version \(appVersion ?? "0") (Build \(build ?? "0"))"
-
-        if Locale.preferredLanguages[0] == "zh-Hans-CN" {
+        
+        if getCurrentLanguage() == "sc" {
             traditionalChinese = false
         }
 
@@ -401,7 +401,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         let sortName = self.traditionalChinese(longName: textChapterTitle)
 
-        print("中文縮寫：\(sortName)，traditionalChinese（Bool）：\(traditionalChinese)")
+        print("中文縮寫：\(sortName)，traditionalChinese 繁體中文模式（Bool）：\(traditionalChinese)")
 
         var gb: String = "0"
 
@@ -576,6 +576,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                             
                             if !self.traditionalChinese {
                                 // 簡體中文模式
+                                print("簡體中文模式")
+                                s = s.gb
                             }
                             
                             self.dailyVerse = s
@@ -586,12 +588,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                             self.UI_updateData()
                         } else {
                             self.spinnerView.stopAnimating()
+                            Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5?text=api_error", method: .get)
                             t.text = "API Error"
                         }
                         
                         
 
                     } else {
+                        Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5?text=Network problem", method: .get)
                         self.UIStatusMessage(Message: "Network problem")
                     }
             }
@@ -776,7 +780,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             "约参": "約三"
         ];
 
-        return (traditional[longName] ?? "")
+        return (traditional[longName.big5] ?? "")
     }
 }
 

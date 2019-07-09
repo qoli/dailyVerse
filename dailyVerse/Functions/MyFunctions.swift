@@ -42,3 +42,18 @@ enum api {
 }
 
 
+func getCurrentLanguage() -> String {
+    let preferredLang = Bundle.main.preferredLocalizations.first! as NSString
+    print("OS Language: \(preferredLang)")
+    
+    switch String(describing: preferredLang) {
+    case "en-US", "en-CN":
+        return "en"//英文
+    case "zh-Hans-US", "zh-Hans-CN", "zh-Hans":
+        return "sc"//中文
+    case "zh-TW", "zh-HK", "zh-Hant", "zh-Hant-CN":
+        return "tc"//中文
+    default:
+        return "en"
+    }
+}
