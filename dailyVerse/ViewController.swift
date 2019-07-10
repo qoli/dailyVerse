@@ -591,8 +591,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
                             Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5?text=api_error", method: .get)
                             t.text = "API Error"
                         }
-                        
-                        
 
                     } else {
                         Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5?text=Network problem", method: .get)
