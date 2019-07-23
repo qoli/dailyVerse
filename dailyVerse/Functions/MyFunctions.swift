@@ -16,31 +16,59 @@ enum api {
         success: @escaping (_ dataRes: Any) -> (),
         failure: @escaping (_ dataRes: Any) -> ()
     ) {
-        Alamofire.request(
-            URL,
-            parameters: Parameters
-            )
-            .responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    success(value)
-                case .failure(let error):
-                    // 發送錯誤信息到開發者
-                    // https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5
- 
-                    // Add URL parameters
-                    let urlParams = [
-                        "text":"dailyVerse:\(error)",
-                    ]
-                    
-                    // Fetch Request
-                    Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5", method: .get, parameters: urlParams)
-                    failure(error)
-                }
+        
+        let headers = [
+            "Content-Type" : "application/json; charset=utf-8"
+        ]
+        
+        if URL == "https://bible.5mlstudio.com/voice.php" {
+            Alamofire.request(
+                URL,
+                parameters: Parameters,
+                headers: headers
+                )
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let value):
+                        success(value)
+                    case .failure(let error):
+                        sendError(title: URL, text: error.localizedDescription)
+                        print(URL)
+                        print(error)
+                        failure(error)
+                    }
+            }
+        } else {
+            Alamofire.request(
+                URL,
+                parameters: Parameters,
+                encoding: JSONEncoding.default,
+                headers: headers
+                )
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let value):
+                        success(value)
+                    case .failure(let error):
+                        sendError(title: URL, text: error.localizedDescription)
+                        print(URL)
+                        print(error)
+                        failure(error)
+                    }
+            }
         }
+    
     }
 }
 
+func sendError(title: String, text: String) {
+    // 發送錯誤信息到開發者
+    
+    let urlParams = [
+        "text":"[ERROR]\n\r- dailyVerse \n\r- \(title) \n\r- \(text)"
+    ]
+    Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5", method: .get, parameters: urlParams)
+}
 
 func getCurrentLanguage() -> String {
     let preferredLang = Bundle.main.preferredLocalizations.first! as NSString

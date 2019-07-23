@@ -285,17 +285,27 @@
                                             <constraint firstItem="cID-Id-9AU" firstAttribute="centerY" secondItem="6eJ-CM-Dbe" secondAttribute="centerY" id="w9j-QO-cey"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiC-j7-tNq">
+                                        <rect key="frame" x="20" y="359.33333333333331" width="335" height="15.666666666666686"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" name="coralPink"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="backgroudColor"/>
                                 <constraints>
                                     <constraint firstItem="MyH-1X-3t4" firstAttribute="leading" secondItem="ghw-ad-NYP" secondAttribute="leading" id="4OI-36-TuP"/>
+                                    <constraint firstItem="OiC-j7-tNq" firstAttribute="leading" secondItem="ghw-ad-NYP" secondAttribute="leading" constant="20" id="Ake-sn-uGF"/>
                                     <constraint firstAttribute="bottom" secondItem="MyH-1X-3t4" secondAttribute="bottom" id="MKh-8i-stj"/>
+                                    <constraint firstItem="OiC-j7-tNq" firstAttribute="centerX" secondItem="ghw-ad-NYP" secondAttribute="centerX" id="MwG-lV-yaA"/>
+                                    <constraint firstAttribute="trailing" secondItem="OiC-j7-tNq" secondAttribute="trailing" constant="20" id="Nz4-ro-X8g"/>
                                     <constraint firstAttribute="bottom" secondItem="XbN-fW-OJB" secondAttribute="bottom" id="a3r-eL-5zf"/>
                                     <constraint firstItem="MyH-1X-3t4" firstAttribute="centerX" secondItem="ghw-ad-NYP" secondAttribute="centerX" id="e29-PZ-Z2W"/>
                                     <constraint firstAttribute="trailing" secondItem="XbN-fW-OJB" secondAttribute="trailing" id="gea-e2-HkK"/>
                                     <constraint firstAttribute="trailing" secondItem="MyH-1X-3t4" secondAttribute="trailing" id="hJI-fZ-x7m"/>
                                     <constraint firstItem="XbN-fW-OJB" firstAttribute="top" secondItem="ghw-ad-NYP" secondAttribute="top" id="oAU-8C-zII"/>
                                     <constraint firstItem="XbN-fW-OJB" firstAttribute="leading" secondItem="ghw-ad-NYP" secondAttribute="leading" id="x3F-hg-LCO"/>
+                                    <constraint firstItem="OiC-j7-tNq" firstAttribute="centerY" secondItem="ghw-ad-NYP" secondAttribute="centerY" id="zmy-Yj-xkv"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUL-4J-pKM" userLabel="aboutView">
@@ -519,6 +529,7 @@
                         <outlet property="aboutImage" destination="8pZ-1H-S8q" id="5Jz-cA-il0"/>
                         <outlet property="aboutMainTextView" destination="Bbq-HU-jT4" id="4Tl-ek-O2z"/>
                         <outlet property="aboutVersion" destination="35p-o0-os6" id="KXf-1D-7kq"/>
+                        <outlet property="chapterTextLabel" destination="OiC-j7-tNq" id="aTk-WY-Fbc"/>
                         <outlet property="chapterUITableView" destination="XbN-fW-OJB" id="GuZ-JN-L9E"/>
                         <outlet property="chapterView" destination="ghw-ad-NYP" id="Nmw-Nw-hsj"/>
                         <outlet property="dateText" destination="Utb-b0-L94" id="cXA-2m-ncd"/>
@@ -572,6 +583,9 @@
         </namedColor>
         <namedColor name="buttonColor">
             <color red="0.875" green="0.89800000190734863" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="coralPink">
+            <color red="0.98000001907348633" green="0.3919999897480011" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

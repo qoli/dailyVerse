@@ -49,6 +49,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             
                 self.todayWidget.typesetting(lineSpacing: 1, lineHeightMultiple: 1, characterSpacing: 1.2)
                 
+            } else {
+                let urlParams = [
+                    "text":"[ERROR]\n\r- dailyVerse \n\r- https://bible.5mlstudio.com \n\r- Today 插件錯誤"
+                ]
+                Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5", method: .get, parameters: urlParams)
             }
         }
     }

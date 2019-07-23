@@ -208,6 +208,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     var isPlaying: Bool = false
     var isReadlyPlay: Bool = false
     var apiDataAudio: JSON = []
+    
+    var isPlayerError: Bool = false
 
     func playAudio() {
         if isPlaying {
@@ -231,12 +233,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             Parameters: parameters,
             success: { value in
                 let json = JSON(value)
-                self.readlyForPlay(url: json["url"].string!)
+                self.readlyForPlay(url: json["url"].string ?? "")
                 self.apiDataAudio = json
             },
             failure: { error in
-                print(error)
-                self.UIStatusMessage(Message: (error as AnyObject).localizedDescription)
+                self.AudioButton.setTitle("朗讀錯誤", for: .normal)
             }
         )
     }
@@ -310,7 +311,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             // play
             self.player?.pause()
         } catch {
-            print(error)
+            sendError(title: "\(url)", text: error.localizedDescription)
             self.UIStatusMessage(Message: (error as AnyObject).localizedDescription)
         }
     }
@@ -325,7 +326,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     @IBAction func audioTap(_ sender: Any) {
         print("> audioTap()")
-        self.switchAudio()
+        
+        if let text = AudioButton.titleLabel?.text {
+            if text == "朗讀錯誤" {
+                self.getAudioURL()
+            } else {
+                self.switchAudio()
+            }
+        }
     }
 
     @IBAction func audioLongPress(_ sender: Any) {
@@ -365,16 +373,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     // MARK: 關閉 詳細章節界面
     @IBAction func closeChapterView(_ sender: UIButton) {
 
+        self.chapterTextLabel.text = ""
         chapterView.alpha = 1
         UIView.animate(withDuration: 0.3) {
             self.chapterView.alpha = 0
         }
         let _ = setTimeout(0.3) {
             self.chapterView.isHidden = true
+            self.spinnerView.stopAnimating()
         }
     }
 
     // MARK: 打開 詳細章節界面
+    
+    @IBOutlet weak var chapterTextLabel: UILabel!
+    
     @IBAction func tapPress(_ sender: UITapGestureRecognizer) {
         print("> tapPress()")
 
@@ -394,8 +407,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     }
 
-    // 表格
-    // （載入詳細章節）
+    // MARK: 載入詳細章節
 
     func tableData() {
 
@@ -422,15 +434,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         self.isReadlyPlay = false
         self.AudioButton.setTitle("...", for: .normal)
         self.getAudioURL()
-
+        
         api.request(
-            URL: "https://bible.5mlstudio.com/bible.php",
+            URL: "https://bible.fhl.net/json/qb.php",
             Parameters: parameters,
             success: { value in
                 // Table Data
                 let json = JSON(value)
                 for (_, subJson): (String, JSON) in json["record"] {
-                    //  print("\(subJson["sec"]) - \(subJson["bible_text"])")
                     let k: Int = subJson["sec"].intValue
                     let b: String = subJson["bible_text"].string!
                     self.verseArray[k] = b
@@ -441,7 +452,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             },
             failure: { error in
                 print(error)
-                self.UIStatusMessage(Message: (error as AnyObject).localizedDescription)
+                self.chapterTextLabel.text = (error as AnyObject).localizedDescription
+                self.UIStatusMessage(Message: "Error and Automated Report.")
+                self.spinnerView.stopAnimating()
             }
         )
 
@@ -514,9 +527,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     }
 
-    // 長按﹣屏幕中央
+    // MARK: 主界面 屏幕中央
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
-//        print("> longPress: \(longPressNumber)")
 
         if longPressNumber == 0 {
             init_verse()
@@ -534,7 +546,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     }
 
 
-    // 點擊﹣分享按鈕
+    // MARK: 主界面 分享按鈕
     @IBAction func shareAction(_ sender: UIButton) {
 
         self.UIStatusMessage(Message: "正在開啟分享...")
@@ -803,3 +815,4 @@ class DesignableLabel: UILabel {
 fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
     return input.rawValue
 }
+

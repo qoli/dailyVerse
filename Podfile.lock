@@ -5,7 +5,7 @@ PODS:
   - DynamicBlurView (4.0.0)
   - MarqueeLabel (4.0.0)
   - MMMaterialDesignSpinner (0.2.5)
-  - NotificationBannerSwift (2.2.2):
+  - NotificationBannerSwift (2.5.1):
     - MarqueeLabel (~> 4.0.0)
     - SnapKit (~> 5.0.0)
   - SnapKit (5.0.0)
@@ -53,7 +53,7 @@ SPEC CHECKSUMS:
   DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
   MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
   MMMaterialDesignSpinner: a548042720c2e5f04212048483085d7942ac3e81
-  NotificationBannerSwift: 2d46cc1b4a0ebf4372baef383f2a2ca82bf0c235
+  NotificationBannerSwift: e55dd801b0d78f1a7bacb10d722a935ec95f94a3
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   SwiftDate: 8d4f14bf1ef68e95094511504856547bf9e3e1a6
