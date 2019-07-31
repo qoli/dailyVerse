@@ -311,7 +311,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
             // play
             self.player?.pause()
         } catch {
-            sendError(title: "\(url)", text: error.localizedDescription)
+            sendMessage(title: "\(url)", text: error.localizedDescription)
             self.UIStatusMessage(Message: (error as AnyObject).localizedDescription)
         }
     }

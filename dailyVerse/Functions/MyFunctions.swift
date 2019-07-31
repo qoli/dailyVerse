@@ -21,51 +21,31 @@ enum api {
             "Content-Type" : "application/json; charset=utf-8"
         ]
         
-        if URL == "https://bible.5mlstudio.com/voice.php" {
-            Alamofire.request(
-                URL,
-                parameters: Parameters,
-                headers: headers
-                )
-                .responseJSON { response in
-                    switch response.result {
-                    case .success(let value):
-                        success(value)
-                    case .failure(let error):
-                        sendError(title: URL, text: error.localizedDescription)
-                        print(URL)
-                        print(error)
-                        failure(error)
-                    }
-            }
-        } else {
-            Alamofire.request(
-                URL,
-                parameters: Parameters,
-                encoding: JSONEncoding.default,
-                headers: headers
-                )
-                .responseJSON { response in
-                    switch response.result {
-                    case .success(let value):
-                        success(value)
-                    case .failure(let error):
-                        sendError(title: URL, text: error.localizedDescription)
-                        print(URL)
-                        print(error)
-                        failure(error)
-                    }
-            }
+        Alamofire.request(
+            URL,
+            parameters: Parameters,
+            headers: headers
+            )
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    success(value)
+                case .failure(let error):
+                    sendMessage(title: URL, text: error.localizedDescription)
+                    print(URL)
+                    print(error)
+                    failure(error)
+                }
         }
     
     }
 }
 
-func sendError(title: String, text: String) {
+func sendMessage(title: String, text: String, type: String = "ERROR") {
     // 發送錯誤信息到開發者
     
     let urlParams = [
-        "text":"[ERROR]\n\r- dailyVerse \n\r- \(title) \n\r- \(text)"
+        "text":"[dailyVerse App]\n\r- \(type) \n\r- \(title) \n\r- \(text)"
     ]
     Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5", method: .get, parameters: urlParams)
 }
