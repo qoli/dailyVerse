@@ -46,12 +46,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 s = s.trimmingCharacters(in: .whitespacesAndNewlines)
                 
                 self.todayWidget.text = s
-            
                 self.todayWidget.typesetting(lineSpacing: 1, lineHeightMultiple: 1, characterSpacing: 1.2)
-                
             } else {
                 let urlParams = [
-                    "text":"[ERROR]\n\r- dailyVerse \n\r- https://bible.5mlstudio.com \n\r- Today 插件錯誤"
+                    "text":"[ERROR]\n\r- dailyVerse \n\r- https://bible.5mlstudio.com \n\r- \(response.result.error?.localizedDescription ?? "Error on Today Extension")  \n\r- Value: \(response.result.value)"
                 ]
                 Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5", method: .get, parameters: urlParams)
             }
