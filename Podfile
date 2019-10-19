@@ -6,7 +6,6 @@ target 'dailyVerse' do
   use_frameworks!
 
   # Pods for dailyVerse
-  pod 'BaiduMobStatCodeless'
   
   # UI Labs
   pod 'NotificationBannerSwift'
@@ -14,12 +13,15 @@ target 'dailyVerse' do
   pod 'DynamicBlurView'
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 
-  #
-  pod 'Alamofire', '~> 4.5'
+  # Network & base
+  pod 'Alamofire'
   pod 'SwiftyJSON'
-  pod 'SwiftDate'
   
+  # 統計
   pod 'Bugly'
+  pod 'BaiduMobStatCodeless'
+  
+  pod 'SwiftDate'
   
   post_install do |installer|
     installer.pods_project.targets.each do |target|
