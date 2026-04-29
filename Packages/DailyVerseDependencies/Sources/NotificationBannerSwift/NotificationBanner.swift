@@ -25,7 +25,7 @@ import MarqueeLabel
 open class NotificationBanner: BaseNotificationBanner {
     
     /// The bottom most label of the notification if a subtitle is provided
-    public private(set) var subtitleLabel: MarqueeLabel?
+    public internal(set) var subtitleLabel: MarqueeLabel?
     
     /// The view that is presented on the left side of the notification
     private var leftView: UIView?
@@ -39,34 +39,37 @@ open class NotificationBanner: BaseNotificationBanner {
     /// Font used for the subtitle label
     private var subtitleFont: UIFont = UIFont.systemFont(ofSize: 15.0)
 
-    public init(title: String? = nil,
-                subtitle: String? = nil,
-                leftView: UIView? = nil,
-                rightView: UIView? = nil,
-                style: BannerStyle = .info,
-                colors: BannerColorsProtocol? = nil) {
+    public init(
+        title: String? = nil,
+        subtitle: String? = nil,
+        leftView: UIView? = nil,
+        rightView: UIView? = nil,
+        style: BannerStyle = .info,
+        colors: BannerColorsProtocol? = nil
+    ) {
         
         super.init(style: style, colors: colors)
         
         if let leftView = leftView {
             contentView.addSubview(leftView)
             
+            let size = (leftView.frame.height > 0) ? min(44, leftView.frame.height) : 44
+            
             leftView.snp.makeConstraints({ (make) in
-                make.top.equalToSuperview().offset(10)
+                make.centerY.equalToSuperview().offset(heightAdjustment / 4)
                 make.left.equalToSuperview().offset(10)
-                make.bottom.equalToSuperview().offset(-10)
-                make.width.equalTo(leftView.snp.height)
+                make.size.equalTo(size)
             })
         }
         
         if let rightView = rightView {
             contentView.addSubview(rightView)
             
+            let size = (rightView.frame.height > 0) ? min(44, rightView.frame.height) : 44
             rightView.snp.makeConstraints({ (make) in
-                make.top.equalToSuperview().offset(10)
+                make.centerY.equalToSuperview().offset(heightAdjustment / 4)
                 make.right.equalToSuperview().offset(-10)
-                make.bottom.equalToSuperview().offset(-10)
-                make.width.equalTo(rightView.snp.height)
+                make.size.equalTo(size)
             })
         }
         
@@ -117,7 +120,7 @@ open class NotificationBanner: BaseNotificationBanner {
         }
         
         labelsView.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
+            make.centerY.equalToSuperview().offset(heightAdjustment / 4)
             
             if let leftView = leftView {
                 make.left.equalTo(leftView.snp.right).offset(padding)
@@ -142,12 +145,14 @@ open class NotificationBanner: BaseNotificationBanner {
         
     }
     
-    public convenience init(attributedTitle: NSAttributedString,
-                            attributedSubtitle: NSAttributedString? = nil,
-                            leftView: UIView? = nil,
-                            rightView: UIView? = nil,
-                            style: BannerStyle = .info,
-                            colors: BannerColorsProtocol? = nil) {
+    public convenience init(
+        attributedTitle: NSAttributedString,
+        attributedSubtitle: NSAttributedString? = nil,
+        leftView: UIView? = nil,
+        rightView: UIView? = nil,
+        style: BannerStyle = .info,
+        colors: BannerColorsProtocol? = nil
+    ) {
         
         let subtitle: String? = (attributedSubtitle != nil) ? "" : nil
         self.init(title: "", subtitle: subtitle, leftView: leftView, rightView: rightView, style: style, colors: colors)
@@ -173,20 +178,22 @@ open class NotificationBanner: BaseNotificationBanner {
     
     internal override func updateMarqueeLabelsDurations() {
         super.updateMarqueeLabelsDurations()
-        subtitleLabel?.speed = .duration(CGFloat(duration - 3))
+        subtitleLabel?.speed = .duration(CGFloat(duration <= 1 ? 1 : duration - 1))
     }
     
 }
 
 public extension NotificationBanner {
     
-    func applyStyling(cornerRadius: CGFloat? = nil,
-                      titleFont: UIFont? = nil,
-                      titleColor: UIColor? = nil,
-                      titleTextAlign: NSTextAlignment? = nil,
-                      subtitleFont: UIFont? = nil,
-                      subtitleColor: UIColor? = nil,
-                      subtitleTextAlign: NSTextAlignment? = nil) {
+    func applyStyling(
+        cornerRadius: CGFloat? = nil,
+        titleFont: UIFont? = nil,
+        titleColor: UIColor? = nil,
+        titleTextAlign: NSTextAlignment? = nil,
+        subtitleFont: UIFont? = nil,
+        subtitleColor: UIColor? = nil,
+        subtitleTextAlign: NSTextAlignment? = nil
+    ) {
         
         if let cornerRadius = cornerRadius {
             contentView.layer.cornerRadius = cornerRadius

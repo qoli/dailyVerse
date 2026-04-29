@@ -20,9 +20,53 @@ import UIKit
 
 class NotificationBannerUtilities: NSObject {
 
+    class var appWindow: UIWindow? {
+        if #available(iOS 13.0, *) {
+            return UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .filter { $0.activationState == .foregroundActive || $0.activationState == .foregroundInactive }
+                .flatMap { $0.windows }
+                .first { $0.isKeyWindow }
+                ?? UIApplication.shared.connectedScenes
+                    .compactMap { $0 as? UIWindowScene }
+                    .flatMap { $0.windows }
+                    .first
+        }
+
+        return UIApplication.shared.keyWindow
+    }
+
+    class var interfaceOrientationIsPortrait: Bool {
+        if #available(iOS 13.0, *) {
+            return appWindow?.windowScene?.interfaceOrientation.isPortrait ?? true
+        }
+
+        return UIApplication.shared.statusBarOrientation.isPortrait
+    }
+
+    class var statusBarHeight: CGFloat {
+        if #available(iOS 13.0, *) {
+            return appWindow?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0
+        }
+
+        return UIApplication.shared.statusBarFrame.height
+    }
+
     class func isNotchFeaturedIPhone() -> Bool {
         if #available(iOS 11, *) {
-            if UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0 > CGFloat(0) {
+            if appWindow?.safeAreaInsets.bottom ?? 0.0 > 0.0 {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+    
+    class func hasDynamicIsland() -> Bool {
+        if #available(iOS 11, *) {
+            if appWindow?.safeAreaInsets.top ?? 0.0 > 50.0 {
                 return true
             } else {
                 return false
