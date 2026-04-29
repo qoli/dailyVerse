@@ -8,8 +8,6 @@ let package = Package(
         .iOS(.v12)
     ],
     products: [
-        .library(name: "Alamofire", targets: ["Alamofire"]),
-        .library(name: "SwiftyJSON", targets: ["SwiftyJSON"]),
         .library(name: "SwiftDate", targets: ["SwiftDate"]),
         .library(name: "SnapKit", targets: ["SnapKit"]),
         .library(name: "MarqueeLabel", targets: ["MarqueeLabel"]),
@@ -19,8 +17,6 @@ let package = Package(
         .library(name: "MMMaterialDesignSpinner", targets: ["MMMaterialDesignSpinner"])
     ],
     targets: [
-        .target(name: "Alamofire"),
-        .target(name: "SwiftyJSON"),
         .target(
             name: "SwiftDate",
             resources: [

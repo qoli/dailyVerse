@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,13 +11,14 @@
 		0A15ED4C1FBABE6700D2E4DA /* UILabel+DV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A15ED4B1FBABE6700D2E4DA /* UILabel+DV.swift */; };
 		0A15ED4E1FBABE8400D2E4DA /* UITextView+DV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A15ED4D1FBABE8400D2E4DA /* UITextView+DV.swift */; };
 		0A15ED501FBABEA500D2E4DA /* UIView+DV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A15ED4F1FBABEA500D2E4DA /* UIView+DV.swift */; };
+		1CAF37BADA75BA2E69A87A16 /* BibleDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833D40B4CADF0357C6981F6 /* BibleDatabase.swift */; };
 		29820E89AEB33AC31BF3480B /* NotificationBannerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 35AC1A2D028454E3E4683CF9 /* NotificationBannerSwift */; };
 		40DECE5EF5C78E081D993E68 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = BFCFD05556CD036DBE5F9631 /* SwiftDate */; };
-		505FDF72B9D6544189A2D86E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2290240189FD4290735C6F0E /* Alamofire */; };
-		511F5229293BB46B74ECFEA7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2290240189FD4290735C6F0E /* Alamofire */; };
 		6AC215BC1F39C47A97EB86FB /* DynamicBlurView in Frameworks */ = {isa = PBXBuildFile; productRef = 8605E0B323A79B198EF57522 /* DynamicBlurView */; };
 		6D8CBD74A4E560B28EE94FF7 /* Spring in Frameworks */ = {isa = PBXBuildFile; productRef = 3B7D0227CE2DD9EC4165AE94 /* Spring */; };
-		7873CE54F3200BC999293877 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = DF14C177D5D6CDE40B774914 /* SwiftyJSON */; };
+		7D3F44825AAC218C22B6C066 /* bible.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A33BCE4BCD7E07E0391809E2 /* bible.sqlite */; };
+		A0B8BF2D572F896AE741857A /* BibleDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833D40B4CADF0357C6981F6 /* BibleDatabase.swift */; };
+		A3D520A9CBB2C917538A48E5 /* bible.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A33BCE4BCD7E07E0391809E2 /* bible.sqlite */; };
 		F9082A521FB8583E00F1DC15 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9082A511FB8583E00F1DC15 /* NotificationCenter.framework */; };
 		F9082A551FB8583E00F1DC15 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9082A541FB8583E00F1DC15 /* TodayViewController.swift */; };
 		F9082A581FB8583E00F1DC15 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9082A561FB8583E00F1DC15 /* MainInterface.storyboard */; };
@@ -65,6 +66,8 @@
 		0A15ED4B1FBABE6700D2E4DA /* UILabel+DV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+DV.swift"; sourceTree = "<group>"; };
 		0A15ED4D1FBABE8400D2E4DA /* UITextView+DV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+DV.swift"; sourceTree = "<group>"; };
 		0A15ED4F1FBABEA500D2E4DA /* UIView+DV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DV.swift"; sourceTree = "<group>"; };
+		A33BCE4BCD7E07E0391809E2 /* bible.sqlite */ = {isa = PBXFileReference; includeInIndex = 1; path = bible.sqlite; sourceTree = "<group>"; };
+		B833D40B4CADF0357C6981F6 /* BibleDatabase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BibleDatabase.swift; sourceTree = "<group>"; };
 		F9082A491FB848F700F1DC15 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		F9082A4B1FB848F900F1DC15 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		F9082A501FB8583E00F1DC15 /* Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,7 +100,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9082A521FB8583E00F1DC15 /* NotificationCenter.framework in Frameworks */,
-				505FDF72B9D6544189A2D86E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,8 +107,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				511F5229293BB46B74ECFEA7 /* Alamofire in Frameworks */,
-				7873CE54F3200BC999293877 /* SwiftyJSON in Frameworks */,
 				40DECE5EF5C78E081D993E68 /* SwiftDate in Frameworks */,
 				6D8CBD74A4E560B28EE94FF7 /* Spring in Frameworks */,
 				6AC215BC1F39C47A97EB86FB /* DynamicBlurView in Frameworks */,
@@ -136,6 +136,15 @@
 				F9082A511FB8583E00F1DC15 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9784822CB7DA74E84838201 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A33BCE4BCD7E07E0391809E2 /* bible.sqlite */,
+			);
+			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F9082A531FB8583E00F1DC15 /* Extension */ = {
@@ -190,6 +199,8 @@
 				F9E45F7C1FB7A54B005DE498 /* Assets.xcassets */,
 				F9E45F7E1FB7A54B005DE498 /* LaunchScreen.storyboard */,
 				F9E45F811FB7A54B005DE498 /* Info.plist */,
+				C9784822CB7DA74E84838201 /* Resources */,
+				B833D40B4CADF0357C6981F6 /* BibleDatabase.swift */,
 			);
 			path = dailyVerse;
 			sourceTree = "<group>";
@@ -210,9 +221,6 @@
 			dependencies = (
 			);
 			name = Extension;
-			packageProductDependencies = (
-				2290240189FD4290735C6F0E /* Alamofire */,
-			);
 			productName = Extension;
 			productReference = F9082A501FB8583E00F1DC15 /* Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -233,8 +241,6 @@
 			);
 			name = dailyVerse;
 			packageProductDependencies = (
-				2290240189FD4290735C6F0E /* Alamofire */,
-				DF14C177D5D6CDE40B774914 /* SwiftyJSON */,
 				BFCFD05556CD036DBE5F9631 /* SwiftDate */,
 				3B7D0227CE2DD9EC4165AE94 /* Spring */,
 				8605E0B323A79B198EF57522 /* DynamicBlurView */,
@@ -264,11 +270,6 @@
 						CreatedOnToolsVersion = 9.1;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
-						SystemCapabilities = {
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
-						};
 					};
 				};
 			};
@@ -302,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9082A581FB8583E00F1DC15 /* MainInterface.storyboard in Resources */,
+				A3D520A9CBB2C917538A48E5 /* bible.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +315,7 @@
 				F924C03B1FBAB3E4008B105F /* InfoPlist.strings in Resources */,
 				F9E45F7D1FB7A54B005DE498 /* Assets.xcassets in Resources */,
 				F9E45F7B1FB7A54B005DE498 /* Main.storyboard in Resources */,
+				7D3F44825AAC218C22B6C066 /* bible.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9082A551FB8583E00F1DC15 /* TodayViewController.swift in Sources */,
+				A0B8BF2D572F896AE741857A /* BibleDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +346,7 @@
 				F9E45F761FB7A54B005DE498 /* AppDelegate.swift in Sources */,
 				F908D2931FB8A3E6002CEEAD /* ChapterCell.swift in Sources */,
 				F94AB5C62009B8F2006BBF98 /* MyFunctions.swift in Sources */,
+				1CAF37BADA75BA2E69A87A16 /* BibleDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,8 +411,16 @@
 				DEVELOPMENT_TEAM = WQY45CL427;
 				INFOPLIST_FILE = Extension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.50;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lsqlite3",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qoli.dailyVerse.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -426,8 +439,16 @@
 				DEVELOPMENT_TEAM = WQY45CL427;
 				INFOPLIST_FILE = Extension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.50;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lsqlite3",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qoli.dailyVerse.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -546,7 +567,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -561,9 +583,17 @@
 				CURRENT_PROJECT_VERSION = 64;
 				DEVELOPMENT_TEAM = WQY45CL427;
 				INFOPLIST_FILE = dailyVerse/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.50;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lsqlite3",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qoli.dailyVerse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -581,9 +611,17 @@
 				CURRENT_PROJECT_VERSION = 64;
 				DEVELOPMENT_TEAM = WQY45CL427;
 				INFOPLIST_FILE = dailyVerse/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.50;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lsqlite3",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qoli.dailyVerse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -632,11 +670,6 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2290240189FD4290735C6F0E /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6A70C492F0540A942BDFA3F9 /* XCLocalSwiftPackageReference "DailyVerseDependencies" */;
-			productName = Alamofire;
-		};
 		35AC1A2D028454E3E4683CF9 /* NotificationBannerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6A70C492F0540A942BDFA3F9 /* XCLocalSwiftPackageReference "DailyVerseDependencies" */;
@@ -661,11 +694,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6A70C492F0540A942BDFA3F9 /* XCLocalSwiftPackageReference "DailyVerseDependencies" */;
 			productName = SwiftDate;
-		};
-		DF14C177D5D6CDE40B774914 /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6A70C492F0540A942BDFA3F9 /* XCLocalSwiftPackageReference "DailyVerseDependencies" */;
-			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -252,28 +252,6 @@
                                                     <action selector="closeChapterView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CVP-qf-UxD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cID-Id-9AU" userLabel="AudioChapterButton">
-                                                <rect key="frame" x="20" y="30" width="60" height="24"/>
-                                                <color key="backgroundColor" name="buttonColor"/>
-                                                <gestureRecognizers/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="S31-w2-LCD"/>
-                                                    <constraint firstAttribute="height" constant="24" id="dWL-Ea-HjT"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="...">
-                                                    <color key="titleColor" name="ButtonText"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="audioTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oKj-s1-7wR"/>
-                                                    <outletCollection property="gestureRecognizers" destination="Tch-Jo-819" appends="YES" id="hAC-ys-Hdi"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="6eJ-CM-Dbe" firstAttribute="centerY" secondItem="MyH-1X-3t4" secondAttribute="centerY" id="GAX-X7-eXO"/>
@@ -281,8 +259,6 @@
                                             <constraint firstItem="6eJ-CM-Dbe" firstAttribute="centerX" secondItem="MyH-1X-3t4" secondAttribute="centerX" id="MQ4-j4-YjF"/>
                                             <constraint firstItem="xgX-yY-DW5" firstAttribute="centerY" secondItem="MyH-1X-3t4" secondAttribute="centerY" id="ZoJ-Wc-tRb"/>
                                             <constraint firstAttribute="height" constant="84" id="n5Q-s2-PbV"/>
-                                            <constraint firstItem="cID-Id-9AU" firstAttribute="leading" secondItem="MyH-1X-3t4" secondAttribute="leading" constant="20" id="sgk-CZ-oxq"/>
-                                            <constraint firstItem="cID-Id-9AU" firstAttribute="centerY" secondItem="6eJ-CM-Dbe" secondAttribute="centerY" id="w9j-QO-cey"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiC-j7-tNq">
@@ -420,8 +396,8 @@
                                                     <action selector="closeAbout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QdV-JI-iLO"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bible.fhl.net" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-6V-6nJ">
-                                                <rect key="frame" x="119.33333333333334" y="133" width="61" height="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eBible.org / WEB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-6V-6nJ">
+                                                <rect key="frame" x="104" y="133" width="92" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                 <color key="textColor" name="TextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -525,7 +501,6 @@
                     </view>
                     <connections>
                         <outlet property="AboutUIView" destination="CUL-4J-pKM" id="pGN-IB-jsH"/>
-                        <outlet property="AudioButton" destination="cID-Id-9AU" id="aFv-f0-855"/>
                         <outlet property="aboutImage" destination="8pZ-1H-S8q" id="5Jz-cA-il0"/>
                         <outlet property="aboutMainTextView" destination="Bbq-HU-jT4" id="4Tl-ek-O2z"/>
                         <outlet property="aboutVersion" destination="35p-o0-os6" id="KXf-1D-7kq"/>
@@ -553,11 +528,6 @@
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="qth-fn-oOf" userLabel="激活小圓圈">
                     <connections>
                         <action selector="longPressTouch:" destination="BYZ-38-t0r" id="UoU-2b-6M3"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Tch-Jo-819" userLabel="長按朗讀按鈕">
-                    <connections>
-                        <action selector="audioLongPress:" destination="BYZ-38-t0r" id="lDA-7q-iVO"/>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>

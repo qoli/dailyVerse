@@ -27,8 +27,6 @@ https://itunes.apple.com/hk/app/%E6%AF%8F%E6%97%A5%E8%81%96%E7%B6%93%E6%95%85%E4
 - "MMMaterialDesignSpinner"
 - "DynamicBlurView"
 - 'Spring'
-- 'Alamofire'
-- 'SwiftyJSON'
 - 'SwiftDate'
 - "TouchVisualizer"
 

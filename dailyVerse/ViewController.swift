@@ -21,12 +21,9 @@
 //SOFTWARE.
 
 import UIKit
-import AVFoundation
 
-import Alamofire
 import Spring
 import SwiftDate
-import SwiftyJSON
 import DynamicBlurView
 import NotificationBannerSwift
 import MMMaterialDesignSpinner
@@ -65,11 +62,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     var updateTableBool: Bool = false
 
     var dailyVerse: String = ""
+    var textBookID: Int = 0
     var textChapterTitle: String = ""
     var textChapterNumber: Int = 0
     var verseArray = Dictionary<Int, String>()
 
-    var traditionalChinese: Bool = true
+    var currentTranslationCode: String = BibleDatabase.preferredTranslationCode()
 
     var longPressNumber: Int = 0
 
@@ -112,9 +110,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         aboutVersion.text = "version \(appVersion ?? "0") (Build \(build ?? "0"))"
         
-        if getCurrentLanguage() == "sc" {
-            traditionalChinese = false
-        }
+        currentTranslationCode = BibleDatabase.preferredTranslationCode()
 
     }
 
@@ -129,20 +125,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     // MARK: 重新處理全局變量
     func UI_updateData() {
         print("> UI_updateData()")
-
-        let matched = self.matches(for: "\\S*", in: dailyVerse.replacingOccurrences(of: ":", with: " "))
-        var r = matched
-        r = r.filter { $0 != "" }
-        print(r)
-
-        textChapterTitle = String(r[0]) //重新賦值章節標題
-        textChapterNumber = Int(r[1]) ?? 99 //重新賦值第 N 章節
-
-        if textChapterNumber == 99 {
-            self.UIStatusMessage(Message: "尋找章節失敗")
-            textChapterNumber = 1
-        }
-
         self.updateDataBool = true
         self.chapterUITableView.reloadData()
 
@@ -202,173 +184,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         }
 
     }
-    @IBOutlet var AudioButton: UIButton!
-
-    var player: AVPlayer?
-    var isPlaying: Bool = false
-    var isReadlyPlay: Bool = false
-    var apiDataAudio: JSON = []
-    
-    var isPlayerError: Bool = false
-
-    func playAudio() {
-        if isPlaying {
-            player?.pause()
-        } else {
-            player?.play()
-        }
-    }
-
-    func getAudioURL() {
-
-        let sortName = self.traditionalChinese(longName: textChapterTitle)
-        let parameters: Parameters = [
-            "link": "https://bible.fhl.net/new/read.php",
-            "chap": textChapterNumber,
-            "chineses": sortName
-        ]
-
-        api.request(
-            URL: "https://bible.5mlstudio.com/voice.php",
-            Parameters: parameters,
-            success: { value in
-                let json = JSON(value)
-                self.readlyForPlay(url: json["url"].string ?? "")
-                self.apiDataAudio = json
-            },
-            failure: { error in
-                self.AudioButton.setTitle("朗讀錯誤", for: .normal)
-            }
-        )
-    }
-
-
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-
-        if keyPath == "rate" {
-            if player?.rate == 1 {
-                print("Playing")
-                isPlaying = true
-                AudioButton.setTitle("播放中", for: .normal)
-            } else {
-                print("Stop")
-                isPlaying = false
-                AudioButton.setTitle("朗讀", for: .normal)
-            }
-        }
-
-        if keyPath == #keyPath(AVPlayer.currentItem.status) {
-            let newStatus: AVPlayerItem.Status
-            if let newStatusAsNumber = change?[NSKeyValueChangeKey.newKey] as? NSNumber {
-                newStatus = AVPlayerItem.Status(rawValue: newStatusAsNumber.intValue)!
-            } else {
-                newStatus = .unknown
-            }
-            if newStatus == .failed {
-                NSLog("Error: \(String(describing: self.player?.currentItem?.error?.localizedDescription)), error: \(String(describing: self.player?.currentItem?.error))")
-                print("failed")
-            }
-        }
-    }
-
-    // Getting error from Notification payload
-    func newErrorLogEntry(_ notification: Notification) {
-        guard let object = notification.object, let playerItem = object as? AVPlayerItem else {
-            return
-        }
-        guard let errorLog: AVPlayerItemErrorLog = playerItem.errorLog() else {
-            return
-        }
-        NSLog("Error: \(errorLog)")
-    }
-
-    func failedToPlayToEndTime(_ notification: Notification) {
-        print("failedToPlayToEndTime")
-    }
-
-    func readlyForPlay(url: String) {
-        print("readlyForPlay: \(url)")
-        self.isReadlyPlay = true
-
-        guard let url = URL(string: url) else {
-            print("Invalid URL")
-            self.UIStatusMessage(Message: "Invalid URL")
-            return
-        }
-
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)))
-            let asset = AVURLAsset(url: url)
-            let item = AVPlayerItem(asset: asset)
-            self.player = AVPlayer(playerItem: item)
-            self.player?.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions(rawValue: NSKeyValueObservingOptions.new.rawValue | NSKeyValueObservingOptions.old.rawValue), context: nil)
-            self.player?.addObserver(self, forKeyPath: #keyPath(AVPlayer.status), options: [.new, .initial], context: nil)
-            // Watch notifications
-            let center = NotificationCenter.default
-            center.addObserver(self, selector: Selector(("newErrorLogEntry:")), name: .AVPlayerItemNewErrorLogEntry, object: player?.currentItem)
-            center.addObserver(self, selector: Selector(("failedToPlayToEndTime:")), name: .AVPlayerItemFailedToPlayToEndTime, object: player?.currentItem)
-
-            // play
-            self.player?.pause()
-        } catch {
-            sendMessage(title: "\(url)", text: error.localizedDescription)
-            self.UIStatusMessage(Message: (error as AnyObject).localizedDescription)
-        }
-    }
-
-    func switchAudio() {
-        if !isReadlyPlay {
-            self.getAudioURL()
-        } else {
-            self.playAudio()
-        }
-    }
-
-    @IBAction func audioTap(_ sender: Any) {
-        print("> audioTap()")
-        
-        if let text = AudioButton.titleLabel?.text {
-            if text == "朗讀錯誤" {
-                self.getAudioURL()
-            } else {
-                self.switchAudio()
-            }
-        }
-    }
-
-    @IBAction func audioLongPress(_ sender: Any) {
-
-        if longPressNumber == 0 {
-            print("> audioLongPress()")
-
-            // 1
-            let optionMenu = UIAlertController(title: nil, message: "選擇版本", preferredStyle: .actionSheet)
-
-            for (index, subJson): (String, JSON) in apiDataAudio["versionName"] {
-                optionMenu.addAction(UIAlertAction(title: subJson.stringValue, style: .default, handler: { action in
-                    let arr: Array = self.apiDataAudio["audioURL"].arrayValue
-                    self.readlyForPlay(url: arr[Int(index)!].stringValue)
-
-                    let _ = self.setTimeout(0.8) {
-                        self.switchAudio()
-                    }
-                }))
-
-            }
-
-            // 4
-            optionMenu.addAction(UIAlertAction(title: "關閉", style: .cancel))
-
-            // 5
-            self.present(optionMenu, animated: true, completion: nil)
-
-            let _ = setTimeout(4.0) {
-                self.longPressNumber = 0
-            }
-        }
-
-        longPressNumber = longPressNumber + 1
-    }
 
     // MARK: 關閉 詳細章節界面
     @IBAction func closeChapterView(_ sender: UIButton) {
@@ -411,52 +226,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     func tableData() {
 
-        let sortName = self.traditionalChinese(longName: textChapterTitle)
-
-        print("中文縮寫：\(sortName)，traditionalChinese 繁體中文模式（Bool）：\(traditionalChinese)")
-
-        var gb: String = "0"
-
-        if traditionalChinese {
-            gb = "0"
-        } else {
-            gb = "1"
-        }
-
-        let parameters: Parameters = [
-            "link": "https://bible.fhl.net/json/qb.php",
-            "gb": gb,
-            "chap": textChapterNumber,
-            "chineses": sortName
-        ]
-
-        // 重置播放狀態
-        self.isReadlyPlay = false
-        self.AudioButton.setTitle("...", for: .normal)
-        self.getAudioURL()
-        
-        api.request(
-            URL: "https://bible.fhl.net/json/qb.php",
-            Parameters: parameters,
-            success: { value in
-                // Table Data
-                let json = JSON(value)
-                for (_, subJson): (String, JSON) in json["record"] {
-                    let k: Int = subJson["sec"].intValue
-                    let b: String = subJson["bible_text"].string!
-                    self.verseArray[k] = b
-                }
-                self.chapterUITableView.reloadData()
-                self.spinnerView.stopAnimating()
-                self.updateTableBool = true
-            },
-            failure: { error in
-                print(error)
-                self.chapterTextLabel.text = (error as AnyObject).localizedDescription
-                self.UIStatusMessage(Message: "Error and Automated Report.")
-                self.spinnerView.stopAnimating()
+        do {
+            verseArray.removeAll()
+            let verses = try BibleDatabase.shared.chapter(
+                bookID: textBookID,
+                chapter: textChapterNumber,
+                translationCode: currentTranslationCode
+            )
+            for verse in verses {
+                verseArray[verse.number] = verse.text
             }
-        )
+            self.chapterUITableView.reloadData()
+            self.spinnerView.stopAnimating()
+            self.updateTableBool = true
+        } catch {
+            print(error)
+            self.chapterTextLabel.text = error.localizedDescription
+            self.UIStatusMessage(Message: "讀取本地章節失敗")
+            self.spinnerView.stopAnimating()
+        }
 
     }
 
@@ -574,40 +362,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
         t.text = ""
 
         spinnerView.startAnimating()
+        currentTranslationCode = BibleDatabase.preferredTranslationCode()
 
         let _ = setTimeout(0.6) {
-            Alamofire.request("https://bible.5mlstudio.com")
-                .responseString { response in
-                    if response.result.isSuccess {
-                        var s: String! = response.result.value ?? ""
-                        
-                        if (response.result.value != "") {
-                            s = s.replacingOccurrences(of: "\r", with: "")
-                            s = s.replacingOccurrences(of: "\n", with: "")
-                            s = s.trimmingCharacters(in: .whitespacesAndNewlines)
-                            
-                            if !self.traditionalChinese {
-                                // 簡體中文模式
-                                print("簡體中文模式")
-                                s = s.gb
-                            }
-                            
-                            self.dailyVerse = s
-                            t.text = s
-                            t.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
-                            t.textAlignment = .center
-                            self.spinnerView.stopAnimating()
-                            self.UI_updateData()
-                        } else {
-                            self.spinnerView.stopAnimating()
-                            Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5?text=api_error", method: .get)
-                            t.text = "API Error"
-                        }
+            do {
+                let verse = try BibleDatabase.shared.dailyVerse(translationCode: self.currentTranslationCode)
+                self.dailyVerse = verse.displayText
+                self.textBookID = verse.bookID
+                self.textChapterTitle = verse.bookName
+                self.textChapterNumber = verse.chapter
 
-                    } else {
-                        Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5?text=Network problem", method: .get)
-                        self.UIStatusMessage(Message: "Network problem")
-                    }
+                t.text = verse.displayText
+                t.typesetting(lineSpacing: 1.5, lineHeightMultiple: 2, characterSpacing: 2)
+                t.textAlignment = .center
+                self.spinnerView.stopAnimating()
+                self.UI_updateData()
+            } catch {
+                self.spinnerView.stopAnimating()
+                t.text = error.localizedDescription
+                self.UIStatusMessage(Message: "讀取本地經文失敗")
             }
         }
     }
@@ -808,11 +581,3 @@ class DesignableButton: UIButton {
 @IBDesignable
 class DesignableLabel: UILabel {
 }
-
-
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
-    return input.rawValue
-}
-

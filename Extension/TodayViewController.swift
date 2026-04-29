@@ -8,7 +8,6 @@
 
 import UIKit
 import NotificationCenter
-import Alamofire
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
@@ -38,21 +37,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func init_verse() {
-        Alamofire.request("https://bible.5mlstudio.com").responseString { response in
-            if response.result.isSuccess {
-                var s: String! = response.result.value
-                s = s.replacingOccurrences(of: "\r", with: "")
-                s = s.replacingOccurrences(of: "\n", with: "")
-                s = s.trimmingCharacters(in: .whitespacesAndNewlines)
-                
-                self.todayWidget.text = s
-                self.todayWidget.typesetting(lineSpacing: 1, lineHeightMultiple: 1, characterSpacing: 1.2)
-            } else {
-                let urlParams = [
-                    "text":"[ERROR]\n\r- dailyVerse \n\r- https://bible.5mlstudio.com \n\r- \(response.result.error?.localizedDescription ?? "Error on Today Extension")  \n\r- Value: \(response.result.value)"
-                ]
-                Alamofire.request("https://tgbot.lbyczf.com/sendMessage/9qvmshonjxf5csk5", method: .get, parameters: urlParams)
-            }
+        do {
+            let verse = try BibleDatabase.shared.dailyVerse()
+            self.todayWidget.text = verse.displayText
+            self.todayWidget.typesetting(lineSpacing: 1, lineHeightMultiple: 1, characterSpacing: 1.2)
+        } catch {
+            self.todayWidget.text = error.localizedDescription
         }
     }
     
@@ -87,4 +77,3 @@ extension UILabel {
         self.attributedText = attributedString
     }
 }
-
