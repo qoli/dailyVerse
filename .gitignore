@@ -57,16 +57,16 @@ Carthage/Build
 
 # fastlane
 #
-# Keep lane definitions and release metadata in git, but leave generated output and signing material out.
+# Keep release automation, App Store metadata, and signing material local.
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/metadata/review_information/
+fastlane/
 *.cer
 *.certSigningRequest
 *.p12
 fastlane_backup/
 Pods/
-fastlane/
 .DS_Store
