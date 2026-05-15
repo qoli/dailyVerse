@@ -48,7 +48,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     @IBOutlet weak var AboutUIView: UIView!
     @IBOutlet weak var aboutMainTextView: SpringView!
-    @IBOutlet weak var aboutVersion: UILabel!
     @IBOutlet weak var aboutImage: SpringImageView!
 
     @IBOutlet weak var chapterView: UIView!
@@ -89,6 +88,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
     }
 
+    @IBAction func openPersonalWebsite(_ sender: UITapGestureRecognizer) {
+        openExternalURL("https://ronniewong.cc")
+    }
+
+    @IBAction func openGitHubProject(_ sender: UITapGestureRecognizer) {
+        openExternalURL("https://github.com/qoli/dailyVerse")
+    }
+
+    private func openExternalURL(_ urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+
     // 一些元件的預先設定
     func UI_Before() {
         self.overlayerView.backgroundColor = UIColor(named: "white0")
@@ -100,16 +112,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
 
         chapterView.isHidden = true
 
-        // 刷新版本號
-        // Get the app's main bundle
-        let mainBundle = Bundle.main
-
-        let appVersion = mainBundle.infoDictionary!["CFBundleShortVersionString"] as? String
-        let build = mainBundle.infoDictionary!["CFBundleVersion"] as? String
-//        print(appVersion)
-
-        aboutVersion.text = "version \(appVersion ?? "0") (Build \(build ?? "0"))"
-        
         currentTranslationCode = BibleDatabase.preferredTranslationCode()
 
     }
